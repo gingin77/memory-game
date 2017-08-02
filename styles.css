@@ -1,0 +1,11 @@
+/*Fonts
+font-family: 'Quicksand', sans-serif;
+font-family: 'Righteous', cursive;
+font-family: 'Crushed', cursive;
+*/
+
+h1 {
+  font-family: 'Quicksand', sans-serif;
+  font: 1.5vw;
+  color: #1b20f5;
+}
