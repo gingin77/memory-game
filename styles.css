@@ -2,10 +2,30 @@
 font-family: 'Quicksand', sans-serif;
 font-family: 'Righteous', cursive;
 font-family: 'Crushed', cursive;
-*/
+
+@import url(http://weloveiconfonts.com/api/?family=maki);
+
+/* maki */
+/*[class*="maki-"]:before {
+  font-family: 'maki', sans-serif;
+}
+
+.maki {
+  font-family: 'maki', sans-serif;
+}*/
+
+.maki{
+  font-family: wingdings;
+  font-size: 4.0vw;
+}
+
+.wrapper {
+  background-color: #cdcdd7;
+  text-align: center;
+}
 
 h1 {
   font-family: 'Quicksand', sans-serif;
   font: 1.5vw;
-  color: #1b20f5;
+  color: #0e0a69;
 }
