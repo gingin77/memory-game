@@ -3,22 +3,14 @@ let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R
 // Below is a starting point for shuffling the cards - see Refs below
 function shuffle(array) {
   var m = array.length, t, i;
-
-  // While there remain elements to shuffle…
-  while (m) {
-
-    // Pick a remaining element…
-    i = Math.floor(Math.random() * m--);
-
-    // And swap it with the current element.
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
-  }
-
-  return array;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    return array;
 }
-// console.log (shuffle(gamecardUniqueArray));
 
 
 let div = document.getElementById( "gameboard_wrapper" );
@@ -29,55 +21,46 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   label.classList.add( "facedown");
   label.addEventListener('click',Fliptofaceup)
 
-  // let span2 = document.createElement( "span" );
-  // span2.setAttribute( "class", "gamecard-unique");
-
   let icon = document.createTextNode(gamecardUniqueArray[i]);
   label.innerText = icon.textContent;
-
-  // label.appendChild( span2 );
 
   div.appendChild( label );
 }
 
 
-
 // Adding a "click" event listener to "label"
 let label = document.getElementsByTagName( 'label' );
+let pairArray = [];
 
 
 function Fliptofaceup(i){
-  /*if (letPlayerDoSomething == true)*/{
   this.classList.toggle("faceup");
-  // setTimeout
+        // push.pairArray(label.innerText);
+        // setTimeout
   this.classList.toggle("facedown");
-}
-}
+  }
+
+  // pairArray.push(event.target.innerText[i]);
+  // return pairArray;
+
+// console.log(pairArray);
 
 
 
 
-// // Event listener code from Newline....
+/*if (letPlayerDoSomething == true)       << Lyman susggested this is useful */
+
 //
-// var headerElement = document.getElementById("header");
 //
-// // Adding a "click" event listener to "header"
-// headerElement.addEventListener("click", ourCallBack);
+//       {
 //
-// // The "ourCallBack()" function is called whenever our declared event listener is triggered.
-// function ourCallBack() {
-//     if( headerElement.style.color === "red" ){
-//         headerElement.style.color = "blue";
-//     }else{
-//         headerElement.style.color = "red";
-//     }
+//
 // }
 //
-
-
-
-
-
+//
+//
+//
+//
 
 
 
