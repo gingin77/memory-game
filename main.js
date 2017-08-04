@@ -2,7 +2,7 @@ let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R
 
 // Below is a starting point for shuffling the cards - see Refs below
 function shuffle(array) {
-  var m = array.length, t, i;
+  let m = array.length, t, i;
     while (m) {
       i = Math.floor(Math.random() * m--);
       t = array[m];
@@ -31,13 +31,23 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
 // Adding a "click" event listener to "label"
 let label = document.getElementsByTagName( 'label' );
 let pairArray = [];
+let icons = 0; /* 2 icons need to go into the pairArray*/
 
 
 function Fliptofaceup(i){
-  this.classList.toggle("faceup");
-        // push.pairArray(label.innerText);
-        // setTimeout
-  this.classList.toggle("facedown");
+  // console.log(label);
+  if (pairArray.length < 2){
+    this.classList.toggle("faceup");
+    pairArray.push(event.target.innerText);
+      console.log("A card has been flipped");
+      console.log(pairArray);
+  } else {
+
+    console.log("FLIPPING CARDS SHOULD NOT BE ALLOWED NOW");
+
+  }
+
+  this.classList.toggle("facedown");/* I need to leave this in order to keep the Unique Icons transparent*/
   }
 
   // pairArray.push(event.target.innerText[i]);
@@ -130,3 +140,10 @@ function Fliptofaceup(i){
 //
 // console.log(bar(7));
 // // How can I set a time delay between execution of  lines
+
+
+
+
+  // while (icons < 2) { DON'T use an iterator here
+  //     pairArray.push(event.target.innerText);
+  //         // setTimeout
