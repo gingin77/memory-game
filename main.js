@@ -18,50 +18,41 @@ function shuffle(array) {
 
   return array;
 }
-
-console.log (shuffle(gamecardUniqueArray));
-
-
-
-
-
+// console.log (shuffle(gamecardUniqueArray));
 
 
 let div = document.getElementById( "gameboard_wrapper" );
-// let label = document.createElement("label");
-//
-// section.appendChild( label );
-
-
 
 for (let i=0; i < gamecardUniqueArray.length; i++){
   let label = document.createElement("label");
+  label.classList.add( gamecardUniqueArray[ i ] );
+  label.classList.add( "facedown");
+  label.addEventListener('click',Fliptofaceup)
 
-  let input = document.createElement( "input" );
-  let span1 = document.createElement( "span" );
-
-  input.setAttribute( "type", "checkbox" );
-  label.setAttribute( "type", "game title");
-  label.classList.add("card_back_pattern");
-  span1.setAttribute( "class", "game-card");
-
-  let span2 = document.createElement( "span" );
-  span2.setAttribute( "class", "gamecard-unique");
+  // let span2 = document.createElement( "span" );
+  // span2.setAttribute( "class", "gamecard-unique");
 
   let icon = document.createTextNode(gamecardUniqueArray[i]);
+  label.innerText = icon.textContent;
 
-  span2.innerText = icon.textContent;
-
-  span1.appendChild( span2 );
-
-  label.appendChild( input );
-  label.appendChild( span1 );
-  // console.log(label);
+  // label.appendChild( span2 );
 
   div.appendChild( label );
 }
 
 
+
+// Adding a "click" event listener to "label"
+let label = document.getElementsByTagName( 'label' );
+
+
+function Fliptofaceup(i){
+  /*if (letPlayerDoSomething == true)*/{
+  this.classList.toggle("faceup");
+  // setTimeout
+  this.classList.toggle("facedown");
+}
+}
 
 
 
