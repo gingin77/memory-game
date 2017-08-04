@@ -14,7 +14,14 @@ body{
 
 h1 {
   font-family: 'Quicksand', sans-serif;
-  font-size: 1.2em;
+  font-size: 0.8em;
+  color: #0e0a69;
+  display: inline;
+}
+
+h3{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.2em;
   color: #0e0a69;
   display: inline;
 }
@@ -23,6 +30,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding-bottom: 5%;
 }
 
 label{
@@ -79,7 +87,7 @@ h5 {
 
 
 
-.gamecard-unique:back{
+.gamecard-unique{
   color: #7C8DD5;
 }
 
