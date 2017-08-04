@@ -9,13 +9,14 @@
 
   </head>
   <body class="page_wrapper">
-    <header>
+    <canvas id="bgCanvas"></canvas>
+    <header class="header_container">
       <div class="symbols">
-        ANQT6JMto <!-- << these will go into an array -->
+        <h5>A N Q T 6 J M t o</h5>
       </div>
       <h1>Memory: A Game to Stretch Your Life</h1>
-      <div>
-        Counter
+      <div class="symbols">
+        <h5>A N Q T 6 J M t o</h5>
       </div>
     </header>
     <div class="gameboard_wrapper" id="gameboard_wrapper">
@@ -29,5 +30,10 @@
     </div>
 
   <script src="main.js"></script>
+  <script src="patternizer.js"></script>
   </body>
 </html>
+
+<!--elements for testing the transform/rotateY style -->
+<p>foo</p>
+<p class="transformed">bar</p>
