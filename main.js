@@ -1,40 +1,4 @@
-// Some styling experiments
-
-let bgCanvas = document.getElementById('bgCanvas');
-
-function render() {
-    bgCanvas.patternizer({
-        stripes : [
-            {
-                color: '#ffb4d5',
-                rotation: 45,
-                opacity: 80,
-                mode: 'normal',
-                width: 30,
-                gap: 10,
-                offset: 0
-            },
-            {
-                color: '#3a83d6',
-                rotation: 200,
-                opacity: 50,
-                mode: 'plaid',
-                width: 10,
-                gap: 10,
-                offset: 0
-            }
-        ],
-        bg : '#ffffff'
-    });
-
-}
-
-
-
-
-
-
-let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "A", "N", "Q", "T", "6", "J", "M", "t", "o" ];
+let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R", "L", "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R", "L"];
 
 // Below is a starting point for shuffling the cards - see Refs below
 function shuffle(array) {
