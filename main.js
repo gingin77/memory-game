@@ -43,6 +43,8 @@ function onClick(i){
   // pairArray.push(event.target.innerText);
 
   console.log("A card has been flipped");
+  pairArray.push(event.target.innerText);
+  // I think I need to see if setting up a switch case break sequence could help here....
   console.log(pairArray);
 
   if (pairArray.length < 2){
