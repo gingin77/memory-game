@@ -1,16 +1,10 @@
 let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R", "L", "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R", "L"];
 
-  // Below is a starting point for shuffling the cards - see Refs below
-  function shuffle(array) {
+// Function to shuffle the cards - see Refs below
+function shuffle(array) {
    let m = array.length, t, i;
-
-   // While there remain elements to shuffle…
    while (m) {
-
-     // Pick a remaining element…
      i = Math.floor(Math.random() * m--);
-
-     // And swap it with the current element.
      t = array[m];
      array[m] = array[i];
      array[i] = t;
@@ -19,15 +13,14 @@ let gamecardUniqueArray = [ "A", "N", "Q", "T", "6", "J", "M", "t", "o", "v", "R
  }
  console.log (shuffle(gamecardUniqueArray));
 
-
-
+// Render elements to represent the cards
 let div = document.getElementById( "gameboard_wrapper" );
 
 for (let i=0; i < gamecardUniqueArray.length; i++){
   let label = document.createElement("label");
   label.classList.add( gamecardUniqueArray[ i ] );
   label.classList.add( "facedown");
-  label.addEventListener('click', onFirstClick);
+  label.addEventListener('click', onClick); /* see function onClick below*/
 
   let icon = document.createTextNode(gamecardUniqueArray[i]);
   label.innerText = icon.textContent;
@@ -35,33 +28,153 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   div.appendChild( label );
  }
 
-// Adding a "click" event listener to "label"
+// The "click" event listener was added to "label" in the loop above.
+
+// Next, define variables and write the function for what happens onFirstClick >>
+
   let label = document.getElementsByTagName( 'label' );
   let pairArray = [];
-  let icons = 0; /* 2 icons need to go into the pairArray*/
+  // let arrayOfPairs = [];
 
-function onFirstClick(i){
+
+function onClick(i){
   this.classList.remove("facedown");
   this.classList.add("faceup");
+  // pairArray.push(event.target.innerText);
+
+  console.log("A card has been flipped");
+  console.log(pairArray);
 
   if (pairArray.length < 2){
     pairArray.push(event.target.innerText);
-    console.log("A card has been flipped");
+    console.log("A 2nd card has been flipped");
     console.log(pairArray);
-      }else if (pairArray.length === 2 && (pairArray[0] === pairArray[1])){
-        console.log("You've made a match!");
-        pairArray.pop();
-        pairArray.shift();
-        console.log(pairArray);
-      }else if(pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
-        console.log("No match!");
-        this.classList.remove("faceup");
-        this.classList.add("facedown");
-        pairArray.pop();
-        pairArray.shift();
-        console.log(pairArray);
-      }
+  }
+  else if(pairArray.length === 2) {
+    // return comparePairs(pairArray);
+    if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+      console.log("You've made a match!");
+      // arrayOfPairs.push(pairArray);
+      // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
+      pairArray.pop();
+      pairArray.shift();
+      console.log(pairArray);
+    }
+    else /*if (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
+      console.log("No match!");
+      pairArray.pop();
+      pairArray.shift();
+      console.log(pairArray);
+      this.classList.remove("facedown");
+      this.classList.add("faceup");
+    }
+  }
 }
+
+
+// function comparePairs(){
+//   if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+//     console.log("You've made a match!");
+//     // arrayOfPairs.push(pairArray);
+//     // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
+//     pairArray.pop();
+//     pairArray.shift();
+//     console.log(pairArray);
+//   }
+//   else /*if (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
+//     console.log("No match!");
+//     pairArray.pop();
+//     pairArray.shift();
+//     console.log(pairArray);
+//     this.classList.remove("facedown");
+//     this.classList.add("faceup");
+//   }
+// }
+//
+
+// Comparison....
+
+
+
+//
+// function onFirstClick(i){
+
+//   pairArray.push(event.target.innerText);
+//   console.log("A card has been flipped");
+//   console.log(pairArray);
+//   label.addEventListener('click', onSecondClick);
+//   console.log(label);
+//   return label;
+// }
+//
+// function onSecondClick(i) {
+//   this.classList.remove("facedown");
+//   this.classList.add("faceup");
+//   pairArray.push(event.target.innerText);
+//   console.log("A 2nd card has been flipped");
+//   console.log(pairArray);
+//
+//       if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+//         console.log("You've made a match!");
+//         // arrayOfPairs.push(pairArray);
+//         // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
+//         pairArray.pop();
+//         pairArray.shift();
+//         console.log(pairArray);
+//
+//       }
+//
+//       else if (pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
+//         console.log("No match!");
+//         pairArray.pop();
+//         pairArray.shift();
+//         console.log(pairArray);
+//       }
+//   }
+//
+
+
+
+
+
+
+    // else
+    //   // this.classList.remove("faceup");
+    //   this.classList.toggle("facedown");
+    //   pairArray.pop();
+    //   pairArray.shift();
+    //   console.log(pairArray);
+    //   }
+    //   else if (pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
+    //     console.log("You've made a match!");
+    //     pairArray.pop();
+    //     pairArray.shift();
+    //     console.log(pairArray);
+      // }
+
+
+
+//
+// if (pairArray.length < 2){
+//   pairArray.push(event.target.innerText);
+//   console.log("A card has been flipped");
+//   console.log(pairArray);
+//   }
+//   else if(pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
+//     console.log("No match!");
+//     // this.classList.remove("faceup");
+//     this.classList.toggle("facedown");
+//     pairArray.pop();
+//     pairArray.shift();
+//     console.log(pairArray);
+//     }
+//     else if (pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+//       console.log("You've made a match!");
+//       pairArray.pop();
+//       pairArray.shift();
+//       console.log(pairArray);
+//     }
+// }
 
 
 
@@ -100,7 +213,7 @@ function onFirstClick(i){
 // // txt = document.createTextNode("your cool text");
 // // span.innerText = txt.textContent;
 // //
-//
+// Use the EventLoop documentation here - https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 //
 // // setTimeout(function() {
 // //     console.log("This was delayed by one second!");
