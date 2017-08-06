@@ -14,13 +14,13 @@ function shuffle(array) {
  console.log (shuffle(gamecardUniqueArray));
 
 // Render elements to represent the cards
-let div = document.getElementById( "gameboard_wrapper" );
+  let div = document.getElementById( "gameboard_wrapper" );
 
 for (let i=0; i < gamecardUniqueArray.length; i++){
   let label = document.createElement("label");
   label.classList.add( gamecardUniqueArray[ i ] );
   label.classList.add( "facedown");
-  label.addEventListener('click', onClick); /* see function onClick below*/
+  label.addEventListener('click', onClick); /* see function onClick below... Can I have 2 functions triggered by the Event listener? */
 
   let icon = document.createTextNode(gamecardUniqueArray[i]);
   label.innerText = icon.textContent;
@@ -30,182 +30,88 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
 
 // The "click" event listener was added to "label" in the loop above.
 
-// Next, define variables and write the function for what happens onFirstClick >>
+// Next, define variables and write the function for what happens onClick
 
   let label = document.getElementsByTagName( 'label' );
   let pairArray = [];
   // let arrayOfPairs = [];
 
+function onClick(i){ /*rename onFirstClick*/
+  event.target.classList.remove("facedown");
+  event.target.classList.add("faceup");
 
-function onClick(i){
-  this.classList.remove("facedown");
-  this.classList.add("faceup");
+
+  console.log(event.target);
   // pairArray.push(event.target.innerText);
 
   console.log("A card has been flipped");
   pairArray.push(event.target.innerText);
   // I think I need to see if setting up a switch case break sequence could help here....
-  console.log(pairArray);
+  console.log(pairArray); /*the first click gets me to here when .length is set to ===2.*/
 
-  if (pairArray.length < 2){
-    pairArray.push(event.target.innerText);
+  if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
-    console.log(pairArray);
-  }
-  else if(pairArray.length === 2) {
-    // return comparePairs(pairArray);
-    if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
-      console.log("You've made a match!");
-      // arrayOfPairs.push(pairArray);
-      // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
-      pairArray.pop();
-      pairArray.shift();
-      console.log(pairArray);
-    }
-    else /*if (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
-      console.log("No match!");
-      pairArray.pop();
-      pairArray.shift();
-      console.log(pairArray);
-      this.classList.remove("facedown");
-      this.classList.add("faceup");
-    }
+    return comparePairs(pairArray);
   }
 }
 
 
-// function comparePairs(){
-//   if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
-//     console.log("You've made a match!");
-//     // arrayOfPairs.push(pairArray);
-//     // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
-//     pairArray.pop();
-//     pairArray.shift();
-//     console.log(pairArray);
-//   }
-//   else /*if (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
-//     console.log("No match!");
-//     pairArray.pop();
-//     pairArray.shift();
-//     console.log(pairArray);
-//     this.classList.remove("facedown");
-//     this.classList.add("faceup");
-//   }
-// }
-//
 
-// Comparison....
+// If I'm going to use a switch, case, break sequence; I need to think of pairArray as the expression.
+function comparePairs(){
+  if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+    console.log("You've made a match!");
+    // arrayOfPairs.push(pairArray);
+    // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
+    pairArray.pop();
+    pairArray.shift();
+    console.log(pairArray);
+  }
+  else /*not exactly equivalent to if: (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
+    console.log("No match!");
+    pairArray.pop();
+    pairArray.shift();
+    console.log(pairArray);
+    console.log(label);
 
+    let cardsToFlipDown = [].slice.call(label.getElementsByClassName( 'faceup' ));
+    console.log(cardsToFlipDown);
 
+    alert("before: " + cardsToFlipDown.length);
+    cardsToFlipDown[0].className='facedown';
+    alert("after: " + cardsToFlipDown.length);
 
-//
-// function onFirstClick(i){
-
-//   pairArray.push(event.target.innerText);
-//   console.log("A card has been flipped");
-//   console.log(pairArray);
-//   label.addEventListener('click', onSecondClick);
-//   console.log(label);
-//   return label;
-// }
-//
-// function onSecondClick(i) {
-//   this.classList.remove("facedown");
-//   this.classList.add("faceup");
-//   pairArray.push(event.target.innerText);
-//   console.log("A 2nd card has been flipped");
-//   console.log(pairArray);
-//
-//       if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
-//         console.log("You've made a match!");
-//         // arrayOfPairs.push(pairArray);
-//         // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
-//         pairArray.pop();
-//         pairArray.shift();
-//         console.log(pairArray);
-//
-//       }
-//
-//       else if (pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
-//         console.log("No match!");
-//         pairArray.pop();
-//         pairArray.shift();
-//         console.log(pairArray);
-//       }
-//   }
-//
+    console.log(cardsToFlipDown);
 
 
 
+      // Debug victory - Figured out that querySelectorAll generates a nodes collection, not an array. The code below converts to an array. Unfortunately, all functions I wrote with remove or replace lead to other error messages. :[
+      
+      // let cardsToFlipDown = [].slice.call(document.querySelectorAll(".faceup"));
+      // console.log(cardsToFlipDown);
+
+      // I tried using classList.remove after converting nodes collection to array
+
+    //   // let flippedBackCards = cardsToFlipDown.classList.remove( "faceup");
+    //   // flippedBackCards = cardsToFlipDown.classList.add( "facedown");
+    //   Error message associated with the above lines: Uncaught TypeError: Cannot read property 'remove' of undefined
+    // at comparePairs (main.js:79)
+    // at HTMLLabelElement.onClick (main.js:54)
+
+      // let flippedBackCards = cardsToFlipDown.replace(".faceup", ".facedown");
+      // The error message I got here was - Uncaught TypeError: cardsToFlipDown.replace is not a function.
+
+      // flippedBackCards = cardsToFlipDown.map(function(faceup){
+      //   return faceup.replace(/'faceup'/gi, "facedown")
+      // });
+      // Uncaught TypeError: faceup.replace is not a function
+
+      console.log(flippedBackCards);
+
+  }
+}
 
 
-
-    // else
-    //   // this.classList.remove("faceup");
-    //   this.classList.toggle("facedown");
-    //   pairArray.pop();
-    //   pairArray.shift();
-    //   console.log(pairArray);
-    //   }
-    //   else if (pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
-    //     console.log("You've made a match!");
-    //     pairArray.pop();
-    //     pairArray.shift();
-    //     console.log(pairArray);
-      // }
-
-
-
-//
-// if (pairArray.length < 2){
-//   pairArray.push(event.target.innerText);
-//   console.log("A card has been flipped");
-//   console.log(pairArray);
-//   }
-//   else if(pairArray.length === 2 && (pairArray[0] !== pairArray[1])){
-//     console.log("No match!");
-//     // this.classList.remove("faceup");
-//     this.classList.toggle("facedown");
-//     pairArray.pop();
-//     pairArray.shift();
-//     console.log(pairArray);
-//     }
-//     else if (pairArray.length === 2 && (pairArray[0] === pairArray[1])){
-//       console.log("You've made a match!");
-//       pairArray.pop();
-//       pairArray.shift();
-//       console.log(pairArray);
-//     }
-// }
-
-
-
-
-
-  /*else if (pairArray[0] !== pairArray[1]) {
-  //   this.classList.remove("faceup");
-  //   this.classList.add("facedown");
-  // }*/
-//   else if (pairArray.length === 2){
-//
-//       if (pairArray[0] === pairArray[1]){
-//           console.log("You've made match!");
-//       }else{
-
-//       }
-//   }
-// }
-
-// //     this.classList.toggle("facedown");/* I need to leave this in order to keep the Unique Icons transparent*/
-// //  }
-//
-//
-//
-//
-// /*if (letPlayerDoSomething == true)       << Lyman susggested this is useful */
-//
-
-//
 // // References
 //
 // // Read about a class shuffle function, the Fisher-Yates Shuffle, here - https://bost.ocks.org/mike/shuffle/ Copy their 3rd suggestion to get started on something.
