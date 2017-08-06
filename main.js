@@ -37,52 +37,58 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   // let arrayOfPairs = [];
 
 function onClick(i){ /*rename onFirstClick*/
+  console.log("A card has been flipped");
+  console.log(event.target);
+
   event.target.classList.remove("facedown");
   event.target.classList.add("faceup");
+  event.target.removeEventListener('click', onClick);
+  pairArray.push(event.target);
 
-
-  console.log(event.target);
-  // pairArray.push(event.target.innerText);
-
-  console.log("A card has been flipped");
-  pairArray.push(event.target.innerText);
-  // I think I need to see if setting up a switch case break sequence could help here....
   console.log(pairArray); /*the first click gets me to here when .length is set to ===2.*/
+
 
   if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
-    return comparePairs(pairArray);
+    console.log(pairArray[0]);
+    console.log(pairArray[1]);
+    comparePairs();
   }
 }
 
 
+// if (newArray.length === 2) {
+//   checkEquality();
+//
+// newArray[0].removeEventListener('click', handleClick);
+//     newArray[1].removeEventListener('click', handleClick);
+
 function comparePairs(){
-  if(pairArray[0] === pairArray[1]){ /*(pairArray.length === 2 && */
+  if(pairArray[0].class === pairArray[1].class){ /*(pairArray.length === 2 && */
     console.log("You've made a match!");
-
     console.log(pairArray);
-    let cardsToLeaveUp = document.querySelectorAll( 'faceup' );
-            // cardsToLeaveUp.classList.add('matched-faceup');
-    console.log(cardsToLeaveUp);
-    pairArray.pop();
-    pairArray.shift();
+    // let cardsToLeaveUp = document.querySelectorAll( 'faceup' );
+    //         // cardsToLeaveUp.classList.add('matched-faceup');
+    // console.log(cardsToLeaveUp);
+    // pairArray.pop();
+    // pairArray.shift();
 
   }
-  else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
-    console.log("No match!");
-
-    let cardsToFlipDown = [].slice.call(document.querySelectorAll("faceup"));
-    console.log(cardsToFlipDown);
-            // setTimeout
-            // while (cardsToFlipDown.length > 0) {
-            //   cardsToFlipDown[0].classList.add("facedown");
-            //   cardsToFlipDown[0].classList.remove("faceup");
-            // }
-    pairArray.pop();
-    pairArray.shift();
-    console.log(pairArray);
-    console.log(label);
-  }
+  // else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
+  //   console.log("No match!");
+  //
+  //   let cardsToFlipDown = [].slice.call(document.querySelectorAll("faceup"));
+  //   console.log(cardsToFlipDown);
+  //           // setTimeout
+  //           // while (cardsToFlipDown.length > 0) {
+  //           //   cardsToFlipDown[0].classList.add("facedown");
+  //           //   cardsToFlipDown[0].classList.remove("faceup");
+  //           // }
+  //   pairArray.pop();
+  //   pairArray.shift();
+  //   console.log(pairArray);
+  //   console.log(label);
+  // }
 }
 
 
