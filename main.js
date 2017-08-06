@@ -33,8 +33,9 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
 // Next, define variables and write the function for what happens onClick
 
   let label = document.getElementsByTagName( 'label' );
-  let pairArray = [];
-  // let arrayOfPairs = [];
+  let pairArray = []; /* this array is to hold 2 cards until they get compared.*/
+  let matchedCards = [];/* this array is to hold cards that have been matched and no longer have an eventlistener on them.*/
+
 
 function onClick(i){ /*rename onFirstClick*/
   console.log("A card has been flipped");
@@ -42,6 +43,7 @@ function onClick(i){ /*rename onFirstClick*/
 
   event.target.classList.remove("facedown");
   event.target.classList.add("faceup");
+  event.target.classList.add("not_yet_compared");
   event.target.removeEventListener('click', onClick);
   pairArray.push(event.target);
 
@@ -50,8 +52,8 @@ function onClick(i){ /*rename onFirstClick*/
 
   if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
-    console.log(pairArray[0]);
-    console.log(pairArray[1]);
+    console.log(pairArray[0].class);/* coming back as undefined*/
+    console.log(pairArray[1].class);/* coming back as undefined*/
     comparePairs();
   }
 }
@@ -64,31 +66,55 @@ function onClick(i){ /*rename onFirstClick*/
 //     newArray[1].removeEventListener('click', handleClick);
 
 function comparePairs(){
-  if(pairArray[0].class === pairArray[1].class){ /*(pairArray.length === 2 && */
+  if(pairArray[0].class === pairArray[1].class){
     console.log("You've made a match!");
     console.log(pairArray);
-    // let cardsToLeaveUp = document.querySelectorAll( 'faceup' );
-    //         // cardsToLeaveUp.classList.add('matched-faceup');
-    // console.log(cardsToLeaveUp);
-    // pairArray.pop();
-    // pairArray.shift();
+
+    matchedCards.push(pairArray[0], pairArray[1]);
+
+    // function question4 () {
+    //   let woodContaining = [];
+    //   for  (let i=0; i < data.length; i++){
+    //     if (data[i].materials.includes("wood")){ //can also be set-up by using a boolean; .includes === "wood"
+    //       woodContaining.push(data[i].title);
+    //     }
+    //   } console.log(woodContaining.join('\r\n'));
+    // }
+    //
+
+    for (let i=0; i < matchedCards.length; i++)
+      if(matchedCards[i].class === ("faceup.not_yet_compared")){
+        matchedCards.class.replace("faceup.not_yet_compared", "matched_already");
+    }
+
+// faceup.replace(/'faceup'/gi, "facedown")
+
+    pairArray.pop();
+    pairArray.shift();
+
+    console.log(pairArray);
+    console.log(matchedCards);
+
+
+
+
 
   }
-  // else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
-  //   console.log("No match!");
-  //
-  //   let cardsToFlipDown = [].slice.call(document.querySelectorAll("faceup"));
-  //   console.log(cardsToFlipDown);
-  //           // setTimeout
-  //           // while (cardsToFlipDown.length > 0) {
-  //           //   cardsToFlipDown[0].classList.add("facedown");
-  //           //   cardsToFlipDown[0].classList.remove("faceup");
-  //           // }
-  //   pairArray.pop();
-  //   pairArray.shift();
-  //   console.log(pairArray);
-  //   console.log(label);
-  // }
+  else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
+    console.log("No match!");
+
+    let cardsToFlipDown = [];
+    console.log(cardsToFlipDown);
+            // setTimeout
+            // while (cardsToFlipDown.length > 0) {
+            //   cardsToFlipDown[0].classList.add("facedown");
+            //   cardsToFlipDown[0].classList.remove("faceup");
+            // }
+    pairArray.pop();
+    pairArray.shift();
+    console.log(pairArray);
+    console.log(label);
+  }
 }
 
 
