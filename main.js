@@ -56,44 +56,73 @@ function onClick(i){ /*rename onFirstClick*/
 }
 
 
-
-// If I'm going to use a switch, case, break sequence; I need to think of pairArray as the expression.
 function comparePairs(){
-  if(pairArray.length === 2 && (pairArray[0] === pairArray[1])){
+  if(pairArray[0] === pairArray[1]){ /*(pairArray.length === 2 && */
     console.log("You've made a match!");
-    // arrayOfPairs.push(pairArray);
-    // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
+
+    console.log(pairArray);
+    let cardsToLeaveUp = document.querySelectorAll( 'faceup' );
+            // cardsToLeaveUp.classList.add('matched-faceup');
+    console.log(cardsToLeaveUp);
     pairArray.pop();
     pairArray.shift();
-    console.log(pairArray);
+
   }
-  else /*not exactly equivalent to if: (pairArray.length === 2 && (pairArray[0] !== pairArray[1]))*/{
+  else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
     console.log("No match!");
+
+    let cardsToFlipDown = [].slice.call(document.querySelectorAll("faceup"));
+    console.log(cardsToFlipDown);
+            // setTimeout
+            // while (cardsToFlipDown.length > 0) {
+            //   cardsToFlipDown[0].classList.add("facedown");
+            //   cardsToFlipDown[0].classList.remove("faceup");
+            // }
     pairArray.pop();
     pairArray.shift();
     console.log(pairArray);
     console.log(label);
-
-    let cardsToFlipDown = [].slice.call(label.getElementsByClassName( 'faceup' ));
-    console.log(cardsToFlipDown);
-
-    alert("before: " + cardsToFlipDown.length);
-    cardsToFlipDown[0].className='facedown';
-    alert("after: " + cardsToFlipDown.length);
-
-    console.log(cardsToFlipDown);
+  }
+}
 
 
+
+    // label = [].slice.call(document.getElementsByTagName('label'));
+    // console.log(label);
+
+    // for (i=0; i < cardsToFlipDown.length; i++){
+    //   for (let item of cardsToFlipDown) {
+    //       log(item.class);
+    // }
+    // console.log(cardsToFlipDown);
+
+
+//     let cardsToFlipDown = Array.from(label.getElementsByClassName("faceup")).forEach(function(item) {
+//    console.log(item.id);
+//
+//
+//     [].slice.call(label.getElementsByClassName( 'faceup' ));
+//     console.log(cardsToFlipDown);
+//
+//
+// });
+      // something from a stackoverflow example I've just been trying to adapt.
+      // https://stackoverflow.com/questions/31311815/how-to-change-class-for-all-elements-retrieved-by-document-getelementsbyclassnam
+      // alert("before: " + cardsToFlipDown.length);
+      // cardsToFlipDown[0].className='facedown';
+      // alert("after: " + cardsToFlipDown.length);
+
+    // console.log(cardsToFlipDown);
 
       // Debug victory - Figured out that querySelectorAll generates a nodes collection, not an array. The code below converts to an array. Unfortunately, all functions I wrote with remove or replace lead to other error messages. :[
-      
+
       // let cardsToFlipDown = [].slice.call(document.querySelectorAll(".faceup"));
       // console.log(cardsToFlipDown);
 
       // I tried using classList.remove after converting nodes collection to array
 
-    //   // let flippedBackCards = cardsToFlipDown.classList.remove( "faceup");
-    //   // flippedBackCards = cardsToFlipDown.classList.add( "facedown");
+      // let flippedBackCards = cardsToFlipDown.classList.remove( "faceup");
+      // flippedBackCards = cardsToFlipDown.classList.add( "facedown");
     //   Error message associated with the above lines: Uncaught TypeError: Cannot read property 'remove' of undefined
     // at comparePairs (main.js:79)
     // at HTMLLabelElement.onClick (main.js:54)
@@ -106,10 +135,8 @@ function comparePairs(){
       // });
       // Uncaught TypeError: faceup.replace is not a function
 
-      console.log(flippedBackCards);
+      // console.log(flippedBackCards);
 
-  }
-}
 
 
 // // References
@@ -149,3 +176,7 @@ function comparePairs(){
 //   // while (icons < 2) { DON'T use an iterator here
 //   //     pairArray.push(event.target.innerText);
 //   //         // setTimeout
+
+
+// arrayOfPairs.push(pairArray);
+// console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
