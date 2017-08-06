@@ -20,7 +20,7 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   let label = document.createElement("label");
   label.classList.add( gamecardUniqueArray[ i ] );
   label.classList.add( "facedown");
-  label.addEventListener('click', onClick); /* see function onClick below... Can I have 2 functions triggered by the Event listener? */
+  label.addEventListener('click', onClick);
 
   let icon = document.createTextNode(gamecardUniqueArray[i]);
   label.innerText = icon.textContent;
@@ -28,11 +28,15 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   div.appendChild( label );
  }
 
+  // let arrayOfLabelElements = [].slice.call(document.getElementsByTagName('label'));
+  // console.log(arrayOfLabelElements);
+
 // The "click" event listener was added to "label" in the loop above.
 
 // Next, define variables and write the function for what happens onClick
 
-  let label = document.getElementsByTagName( 'label' );
+  // let label = document.getElementsByTagName( 'label' ); /*Move label up and assign to an empty array.*/
+
   let pairArray = []; /* this array is to hold 2 cards until they get compared.*/
   let matchedCards = [];/* this array is to hold cards that have been matched and no longer have an eventlistener on them.*/
 
@@ -52,39 +56,48 @@ function onClick(i){ /*rename onFirstClick*/
 
   if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
-    console.log(pairArray[0].class);/* coming back as undefined*/
-    console.log(pairArray[1].class);/* coming back as undefined*/
+    console.log(pairArray[0].innerText);/* coming back as undefined*/
+    console.log(pairArray[1].innerText);/* coming back as undefined*/
     comparePairs();
   }
 }
 
 
-// if (newArray.length === 2) {
-//   checkEquality();
-//
-// newArray[0].removeEventListener('click', handleClick);
-//     newArray[1].removeEventListener('click', handleClick);
-
 function comparePairs(){
-  if(pairArray[0].class === pairArray[1].class){
-    console.log("You've made a match!");
+  if(pairArray[0].innerText === pairArray[1].innerText){
     console.log(pairArray);
+    console.log("You've made a match!");
 
-    matchedCards.push(pairArray[0], pairArray[1]);
-
-    // function question4 () {
-    //   let woodContaining = [];
-    //   for  (let i=0; i < data.length; i++){
-    //     if (data[i].materials.includes("wood")){ //can also be set-up by using a boolean; .includes === "wood"
-    //       woodContaining.push(data[i].title);
-    //     }
-    //   } console.log(woodContaining.join('\r\n'));
+    // pairArray.map(function(flip){
+    //   if (innerHTML = "not_yet_compared"){
+    //     replace('faceup','facedown');
+    //   }
     // }
     //
+    // console.log(pairArray);
 
-    for (let i=0; i < matchedCards.length; i++)
-      if(matchedCards[i].class === ("faceup.not_yet_compared")){
-        matchedCards.class.replace("faceup.not_yet_compared", "matched_already");
+    // matchedCards.push(pairArray[0], pairArray[1]);
+    //
+    //
+    // let matchedElements = (document.getElementsByClassName('not_yet_compared'));
+    // console.log(matchedElements);
+    // matchedElements[0].classList.remove('faceup')
+    //
+    //
+    // // // matchedElements.map('not_yet_compared');
+    // //
+    // //
+    // console.log(matchedCards);
+    // //
+
+  function replace(){
+    if("faceup.not_yet_compared"){
+      return replace("faceup.not_yet_compared","leave_faceup");
+    }
+  }
+    for (let i=0; i < pairArray.length; i++)
+      if(pairArray[i].includes = "faceup.not_yet_compared"){
+        pairArray[i].replace("faceup.not_yet_compared","leave_faceup");
     }
 
 // faceup.replace(/'faceup'/gi, "facedown")
@@ -113,7 +126,7 @@ function comparePairs(){
     pairArray.pop();
     pairArray.shift();
     console.log(pairArray);
-    console.log(label);
+    // console.log(label);
   }
 }
 
