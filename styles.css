@@ -104,10 +104,12 @@ label{
   border: 2px solid #7C8DD5;
 }
 
-.faceup{
+.faceup, .leave_faceup {
   background-color: #f9f2e4;
   color: #7C8DD5;
 }
+
+
 
 
 

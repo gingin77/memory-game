@@ -38,7 +38,7 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   // let label = document.getElementsByTagName( 'label' ); /*Move label up and assign to an empty array.*/
 
   let pairArray = []; /* this array is to hold 2 cards until they get compared.*/
-  let matchedCards = [];/* this array is to hold cards that have been matched and no longer have an eventlistener on them.*/
+  let matchedCards = [];/* this array is to hold cards that have been matched and no longer have an eventlistener on them. class should be "leave_faceup"*/
 
 
 function onClick(i){ /*rename onFirstClick*/
@@ -56,8 +56,8 @@ function onClick(i){ /*rename onFirstClick*/
 
   if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
-    console.log(pairArray[0].innerText);/* coming back as undefined*/
-    console.log(pairArray[1].innerText);/* coming back as undefined*/
+    console.log(pairArray[0].innerText);/* coming back as undefined when '.class', changed to '.innterText'   */
+    console.log(pairArray[1].innerText);
     comparePairs();
   }
 }
@@ -66,21 +66,43 @@ function onClick(i){ /*rename onFirstClick*/
 function comparePairs(){
   if(pairArray[0].innerText === pairArray[1].innerText){
     console.log(pairArray);
+    matchedCards.push(pairArray[0],pairArray[1]);
     console.log("You've made a match!");
 
-    // pairArray.map(function(flip){
-    //   if (innerHTML = "not_yet_compared"){
-    //     replace('faceup','facedown');
-    //   }
-    // }
-    //
-    // console.log(pairArray);
+    let matchedElements = (document.getElementsByClassName('not_yet_compared'));
+    console.log(matchedElements);
 
-    // matchedCards.push(pairArray[0], pairArray[1]);
-    //
+    matchedElements[0].classList.remove('faceup');
+    matchedElements[0].classList.add('leave_faceup');
+    matchedElements[1].classList.remove('faceup');
+    matchedElements[1].classList.add('leave_faceup');
+
+    matchedElements[1].classList.remove('not_yet_compared');
+    matchedElements[0].classList.remove('not_yet_compared');
+
+    console.log(matchedElements);
+
+    pairArray.pop();
+    pairArray.shift();
+    console.log(pairArray);
+
+    console.log("The matched cards are: ",(matchedCards));
+  }
+
     //
     // let matchedElements = (document.getElementsByClassName('not_yet_compared'));
-    // console.log(matchedElements);
+
+  // pairArray.map(function(flip){
+  //   if (innerHTML = "not_yet_compared"){
+  //     replace('faceup','facedown');
+  //   }
+  // }
+  //
+  // console.log(pairArray);
+
+  // matchedCards.push(pairArray[0], pairArray[1]);
+  //
+  //
     // matchedElements[0].classList.remove('faceup')
     //
     //
@@ -89,44 +111,45 @@ function comparePairs(){
     // //
     // console.log(matchedCards);
     // //
-
-  function replace(){
-    if("faceup.not_yet_compared"){
-      return replace("faceup.not_yet_compared","leave_faceup");
-    }
-  }
-    for (let i=0; i < pairArray.length; i++)
-      if(pairArray[i].includes = "faceup.not_yet_compared"){
-        pairArray[i].replace("faceup.not_yet_compared","leave_faceup");
-    }
+// console.log(typeof pairArray[i]);
+  //
+  // function replace(){
+  //   if("faceup.not_yet_compared"){
+  //     return replace("faceup.not_yet_compared","leave_faceup");
+  //   }
+  // }
+  //   for (let i=0; i < pairArray.length; i++)
+  //     if(pairArray[i].includes = "faceup.not_yet_compared"){
+  //       pairArray[i].replace("faceup.not_yet_compared","leave_faceup");
+  //   }
 
 // faceup.replace(/'faceup'/gi, "facedown")
 
-    pairArray.pop();
-    pairArray.shift();
 
-    console.log(pairArray);
-    console.log(matchedCards);
-
-
-
-
-
-  }
   else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
     console.log("No match!");
 
-    let cardsToFlipDown = [];
-    console.log(cardsToFlipDown);
-            // setTimeout
-            // while (cardsToFlipDown.length > 0) {
-            //   cardsToFlipDown[0].classList.add("facedown");
-            //   cardsToFlipDown[0].classList.remove("faceup");
-            // }
     pairArray.pop();
     pairArray.shift();
     console.log(pairArray);
     // console.log(label);
+
+    let non_matchedElements = (document.getElementsByClassName('not_yet_compared'));
+    console.log(non_matchedElements);
+
+    non_matchedElements[0].addEventListener('click', onClick);
+    non_matchedElements[1].addEventListener('click', onClick);
+
+
+    non_matchedElements[0].classList.remove('faceup');
+    non_matchedElements[0].classList.add('facedown');
+    non_matchedElements[1].classList.remove('faceup');
+    non_matchedElements[1].classList.add('facedown');
+    non_matchedElements[1].classList.remove('not_yet_compared');
+    non_matchedElements[0].classList.remove('not_yet_compared');
+
+    console.log(non_matchedElements);
+
   }
 }
 
