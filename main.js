@@ -79,10 +79,7 @@ function comparePairs(){
     console.log(pairArray);
 
     console.log("The matched cards array should now list accumulating matches: ",(matchedCards));
-  }
-
-
-  else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
+  }else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
     console.log("No match!");
 
     pairArray.pop();
