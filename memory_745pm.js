@@ -28,11 +28,18 @@ for (let i=0; i < gamecardUniqueArray.length; i++){
   div.appendChild( label );
  }
 
+  // let arrayOfLabelElements = [].slice.call(document.getElementsByTagName('label'));
+  // console.log(arrayOfLabelElements);
+
 // The "click" event listener was added to "label" in the loop above.
+
 // Next, define variables and write the function for what happens onClick
+
+  // let label = document.getElementsByTagName( 'label' ); /*Move label up and assign to an empty array.*/
 
   let pairArray = []; /* this array is to hold 2 cards until they get compared.*/
   let matchedCards = [];/* this array is to hold cards that have been matched and no longer have an eventlistener on them. class should be "leave_faceup"*/
+
 
 function onClick(i){ /*rename onFirstClick*/
   console.log("A card has been flipped");
@@ -45,6 +52,7 @@ function onClick(i){ /*rename onFirstClick*/
   pairArray.push(event.target);
 
   console.log(pairArray); /*the first click gets me to here when .length is set to ===2.*/
+
 
   if (pairArray.length === 2){
     console.log("A 2nd card has been flipped");
@@ -78,8 +86,44 @@ function comparePairs(){
     pairArray.shift();
     console.log(pairArray);
 
-    console.log("The matched cards array should now list accumulating matches: ",(matchedCards));
+    console.log("The matched cards are: ",(matchedCards));
   }
+
+    //
+    // let matchedElements = (document.getElementsByClassName('not_yet_compared'));
+
+  // pairArray.map(function(flip){
+  //   if (innerHTML = "not_yet_compared"){
+  //     replace('faceup','facedown');
+  //   }
+  // }
+  //
+  // console.log(pairArray);
+
+  // matchedCards.push(pairArray[0], pairArray[1]);
+  //
+  //
+    // matchedElements[0].classList.remove('faceup')
+    //
+    //
+    // // // matchedElements.map('not_yet_compared');
+    // //
+    // //
+    // console.log(matchedCards);
+    // //
+// console.log(typeof pairArray[i]);
+  //
+  // function replace(){
+  //   if("faceup.not_yet_compared"){
+  //     return replace("faceup.not_yet_compared","leave_faceup");
+  //   }
+  // }
+  //   for (let i=0; i < pairArray.length; i++)
+  //     if(pairArray[i].includes = "faceup.not_yet_compared"){
+  //       pairArray[i].replace("faceup.not_yet_compared","leave_faceup");
+  //   }
+
+// faceup.replace(/'faceup'/gi, "facedown")
 
 
   else{            /*equivalent to condition: (pairArray[0] !== pairArray[1])*/
@@ -88,26 +132,23 @@ function comparePairs(){
     pairArray.pop();
     pairArray.shift();
     console.log(pairArray);
+    // console.log(label);
 
-    let non_matchedElements =(document.getElementsByClassName('not_yet_compared'));
+    let non_matchedElements = (document.getElementsByClassName('not_yet_compared'));
     console.log(non_matchedElements);
 
-    let delay = 1500 /*time for player to see the card face on mismatched cards*/
-    setTimeout (function(){
-      non_matchedElements[0].addEventListener('click', onClick);
-      non_matchedElements[1].addEventListener('click', onClick);
+    non_matchedElements[0].addEventListener('click', onClick);
+    non_matchedElements[1].addEventListener('click', onClick);
 
 
-      non_matchedElements[0].classList.remove('faceup');
-      non_matchedElements[0].classList.add('facedown');
-      non_matchedElements[1].classList.remove('faceup');
-      non_matchedElements[1].classList.add('facedown');
-      non_matchedElements[1].classList.remove('not_yet_compared');
-      non_matchedElements[0].classList.remove('not_yet_compared');
+    non_matchedElements[0].classList.remove('faceup');
+    non_matchedElements[0].classList.add('facedown');
+    non_matchedElements[1].classList.remove('faceup');
+    non_matchedElements[1].classList.add('facedown');
+    non_matchedElements[1].classList.remove('not_yet_compared');
+    non_matchedElements[0].classList.remove('not_yet_compared');
 
-      console.log("The non-matched cards array should now be empty: ", (non_matchedElements));
-    }, delay);
-
+    console.log(non_matchedElements);
 
   }
 }
@@ -207,43 +248,3 @@ function comparePairs(){
 
 // arrayOfPairs.push(pairArray);
 // console.log("here is the arrayOfPairs: " + (arrayOfPairs)); Leave these 2 lines. If the arrayOfPairs is going to be useful as a score card, then it needs to be structured as an array of arrays.....
-
-
-
-
-    //Code that failed when trying to get cards to switch classes.
-
-    // let matchedElements = (document.getElementsByClassName('not_yet_compared'));
-
-  // pairArray.map(function(flip){
-  //   if (innerHTML = "not_yet_compared"){
-  //     replace('faceup','facedown');
-  //   }
-  // }
-  //
-  // console.log(pairArray);
-
-  // matchedCards.push(pairArray[0], pairArray[1]);
-  //
-  //
-    // matchedElements[0].classList.remove('faceup')
-    //
-    //
-    // // // matchedElements.map('not_yet_compared');
-    // //
-    // //
-    // console.log(matchedCards);
-    // //
-// console.log(typeof pairArray[i]);
-  //
-  // function replace(){
-  //   if("faceup.not_yet_compared"){
-  //     return replace("faceup.not_yet_compared","leave_faceup");
-  //   }
-  // }
-  //   for (let i=0; i < pairArray.length; i++)
-  //     if(pairArray[i].includes = "faceup.not_yet_compared"){
-  //       pairArray[i].replace("faceup.not_yet_compared","leave_faceup");
-  //   }
-
-// faceup.replace(/'faceup'/gi, "facedown")
