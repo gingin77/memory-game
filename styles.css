@@ -85,7 +85,8 @@ header {
 }
 
 label{
-  /*padding: 3%;*/
+  padding: 2%;
+  /*box-sizing: border-box; doesn't seem to do anything*/
   width: 100%;
   height: 100%;
   display: flex;
