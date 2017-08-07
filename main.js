@@ -245,3 +245,9 @@ function comparePairs(){
   //   }
 
 // faceup.replace(/'faceup'/gi, "facedown")
+
+// <!--elements for testing the transform/rotateY style -->
+// <!-- <p>foo</p>
+// <p class="transformed">bar</p>
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateY -->

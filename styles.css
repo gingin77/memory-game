@@ -2,6 +2,7 @@
 font-family: 'Quicksand', sans-serif;
 font-family: 'Righteous', cursive;
 font-family: 'Crushed', cursive;
+font-family:
 
 Pattern taken from - http://www.heropatterns.com/
 */
@@ -13,9 +14,9 @@ body{
 }
 
 h1 {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 0.9em;
-  color: #0e0a69;
+  font-family: 'Righteous', sans-serif;
+  font-size: 1.3em;
+  color: #7C8DD5;
   display: inline;
   margin: 10% 0 5% 0;
   text-align: start;
@@ -31,7 +32,7 @@ h5{
 h3{
   font-family: 'Quicksand', sans-serif;
   font-size: 0.3em;
-  color: #0e0a69;
+  color: #7C8DD5;
   display: inline;
   text-align: end;
   margin: 0;
@@ -104,7 +105,7 @@ label{
   border: 2px solid #7C8DD5;
 }
 
-.faceup, .leave_faceup {
+.faceup, .leave_faceup{
   background-color: #f9f2e4;
   color: #7C8DD5;
 }
