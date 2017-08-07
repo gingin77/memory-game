@@ -107,8 +107,6 @@ function comparePairs(){
 
       console.log("The non-matched cards array should now be empty: ", (non_matchedElements));
     }, delay);
-
-
   }
 }
 
