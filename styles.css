@@ -44,6 +44,16 @@ h3{
   margin: 0;
 }
 
+h2{
+  font-family: 'Quicksand', sans-serif;
+  color: #7C8DD5;
+  display: inline;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 1em;
+}
+
 /******Cluster Header Styling boxes here ************/
 
 header {

@@ -60,28 +60,38 @@ function gameStart(){ /*need to remove button and span text; switch the class on
        }
 
        let gameTimer = setTimeout(function(){
-         let end_of_game = document.createElement( "span" );
+         let end_of_game = document.createElement( "h2" );
              end_of_game.innerText = "Game over";
-             div.appendChild(game_directions);
+             div.appendChild(end_of_game);
 
-             let card_deck = document.getElementsByTagName( "label" );
-             console.log(typeof card_deck);
-             console.log( card_deck );
-             //  cards.Nodelistremove(cards); //removes cards//
+             let parentDiv = document.getElementById( "gameboard_wrapper" );
+             console.log( parentDiv );
+             console.log(typeof parentDiv);
+             let cards = div.querySelectorAll ( "label" );
+             console.log(typeof cards);
+             console.log( cards );
+            //  cards.Nodelistremove(cards); //removes cards//
+            //  div.removeChild.remove( cards );
 
-             let i=0;
-             while (i < card_deck.length){
-               card_deck.length[i].parentNode.removeChild(card_deck.length[i]);
-               i++;
-             }
+            //  for (let i=cards.length; i>=0; i--){
+            //     cards[i].parentDiv.removeChild(cards[i]);
+            //   }
+
+            // parentDiv.documentElement.removeChild(cards); Uncaught TypeError: Cannot read property 'removeChild' of undefined
+
+            // div.removeChild(cards);Uncaught TypeError: Failed to execute 'removeChild' on 'Node': parameter 1 is not of type 'Node'.
+
+             for (let i=cards.length-1; i > -1; i--){
+                cards[i].parentNode.removeChild(cards[i])
+              }
+
+              // ^^THIS KILLS THE WHOLE DECK - FINALLY!!!!!
 
 
-            //  while (cards < card_deck.length){
-            //    cards[i].parentNode.removeChild(cards[i]);
-            //    cards++;
-              //  Uncaught ReferenceError: i is not defined
-              
-       }, 5000);/*Give player 180,000 ms but leave at 30,000 while troubleshooting*/
+
+
+
+       }, 100000);/*Give player 120,000 ms but leave at 30,000 while troubleshooting*/
   }
 
 // The "click" event listener was added to "label" in the loop above.
@@ -145,7 +155,7 @@ function comparePairs(){
     let non_matchedElements =(document.getElementsByClassName('not_yet_compared'));
     console.log(non_matchedElements);
 
-    let delay = 1500 /*time for player to see the card face on mismatched cards*/
+    // let delay = 1000 /*time for player to see the card face on mismatched cards*/
     setTimeout (function(){
       non_matchedElements[0].addEventListener('click', onClick);
       non_matchedElements[1].addEventListener('click', onClick);
@@ -159,7 +169,7 @@ function comparePairs(){
       non_matchedElements[0].classList.remove('not_yet_compared');
 
       console.log("The non-matched cards array should now be empty: ", (non_matchedElements));
-    }, delay);
+    }, 1000);
   }
 }
 
