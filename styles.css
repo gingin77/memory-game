@@ -84,7 +84,7 @@ header {
 
 /******Cluster Game Board Grad Styling boxes here ************/
 
-.gameboard_wrapper {
+#gameboard_wrapper {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
