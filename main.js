@@ -5,26 +5,12 @@ function shuffle (array) {
   let t = ''
   let i = ''
   while (al) {
-    // perform an iteration until al > 0
-
     i = Math.floor(Math.random() * al--)
-      // Assign 'i' the value of a random # based on the array length minus one.
-      // 'i' will be less than or equal to 23 on the first iteration of the while loop.
-      // With each iteration, 'al' decrements by 1.
-      // Therefore, the random possibilites for 'i' reduce according to the reduction of 'al'.
-
     t = array[al]
-        // 't' is set to equal the array position 'al', which will be the last position at the beginning of loop and the first position when the loop ends.
-
     array[al] = array[i]
-      // The assignment relationship above is saying, the value at position 'al' will be set to the value at position 'i' (the random position), which for the first iteration is similar to saying, "move the random card that was picked to the end of the deck."
-
     array[i] = t
-      // This last relationship replaces the value at position 'i' with the value at position 'al', based on 't' previously being assigned to 'array[al]'.
-      // The last 2 lines serve to swap out the randomly picked card with the card at position 'al' and since 'al' decrements with each iteration of the array, the non-random, exchanged card progresses from being in position 23 to postion 0.
   }
   return array
-      // The array is returned after the while loop altered the arrangement of items within the array. Note, only a single array was used. There was not an exchange of values between 2 independent arrays.
 }
 
 shuffle(gamecardUniqueArray)
