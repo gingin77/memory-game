@@ -1,4 +1,35 @@
-let deckOfMemoryCards = [ 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(' ]
+let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(']
+let singleCard = ''
+let matchedCards = [] /*  this array is to hold cards that have been matched and no longer have an eventlistener on them. class should be 'leave_faceup'  */
+
+let gameboard = document.getElementById('gameboard_wrapper')
+
+let textframe = document.createElement('div')
+textframe.setAttribute('id', 'display_column_align')
+gameboard.appendChild(textframe)
+
+let startButton = document.createElement('div')
+textframe.appendChild(startButton)
+startButton.classList.add('start_button')
+startButton.addEventListener('click', gameStart)
+startButton.innerText = 'Play'
+
+let gameDirections = document.createElement('h3')
+gameDirections.innerText = 'Hit play to start the game timer!'
+textframe.appendChild(gameDirections)
+
+function gameStart (event) {
+  removeStartFeatures()
+  shuffle(deckOfMemoryCards)
+  makeCards()
+  gameTimer()
+}
+
+function removeStartFeatures () {
+  startButton.remove(startButton)
+  gameDirections.remove(gameDirections)
+  gameboard.classList.remove('gameboard_wrapper_at_start')
+}
 
 function shuffle (array) {
   let al = array.length
@@ -12,137 +43,116 @@ function shuffle (array) {
   }
   return array
 }
-console.log(deckOfMemoryCards)
-let gameboard = document.getElementById('gameboard_wrapper')
-gameboard.setAttribute('class', 'gameboard_wrapper_solid')
 
-let startButton = document.createElement('div')
-gameboard.appendChild(startButton)
-startButton.classList.add('start_button')
-startButton.addEventListener('click', gameStart)
-startButton.innerText = 'Play'
-
-let gameDirections = document.createElement('h3')
-gameDirections.innerText = 'Hit play to start the game timer!'
-gameboard.appendChild(gameDirections)
-
-function gameStart (event) {
-  shuffle(deckOfMemoryCards)
-  removeStartFeatures(event)
-  makeCards(event)
-  gameTimer(event)
-}
-
-let singleCard = ''
-function makeCards (event) {
+function makeCards () {
   for (let i = 0; i < deckOfMemoryCards.length; i++) {
     singleCard = document.createElement('div')
-    singleCard.classList.add(deckOfMemoryCards[ i ])
+    singleCard.classList.add(deckOfMemoryCards[i])
     singleCard.classList.add('facedown', 'singleCard')
     singleCard.addEventListener('click', onClick)
 
     let icon = document.createTextNode(deckOfMemoryCards[i])
     singleCard.innerText = icon.textContent
-
     gameboard.appendChild(singleCard)
   }
 }
 
-function gameTimer (event) {
-  setTimeout(function () {
-    let endOfGame = document.createElement('span')
-    endOfGame.innerText = 'Game over'
-    gameboard.appendChild(endOfGame)
+let pairArray = []
 
-    let cards = document.getElementsByClassName('singleCard')
-    console.log(typeof cards)
-    console.log(cards)
-
-    for (let i = cards.length - 1; i > -1; i--) {
-      cards[i].parentNode.removeChild(cards[i])
-    }
-  }, 20000)  /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
-}
-
-function removeStartFeatures () {
-  startButton.remove(startButton)
-  gameDirections.remove(gameDirections)
-  gameboard.classList.remove('gameboard_wrapper_solid')
-  console.log('The start features have been removed')
-}
-
-// Next, define variables and write the function for what happens onClick
-
-let pairArray = [] /* this array is to hold 2 cards until they get compared.  */
-let matchedCards = [] /*  this array is to hold cards that have been matched and no longer have an eventlistener on them. class should be 'leave_faceup'  */
-
-function onClick (i) {  //  *rename onFirstClick*/
+function onClick (i) {
+  let clickedCard = event.target
   console.log('A card has been flipped')
-  console.log(event.target)
-
-  event.target.classList.remove('facedown')
-  event.target.classList.add('faceup')
-  event.target.classList.add('not_yet_compared')
-  event.target.removeEventListener('click', onClick)
-  pairArray.push(event.target)
-
-  console.log(pairArray)  //  *the first click gets me to here when .length is set to ===2.*/
+  clickedCard.classList.remove('facedown')
+  clickedCard.classList.add('faceup', 'not_yet_compared')
+  // clickedCard.classList.add()
+  clickedCard.removeEventListener('click', onClick)
+  pairArray.push(clickedCard)
 
   if (pairArray.length === 2) {
     console.log('A 2nd card has been flipped')
-    console.log(pairArray[0].innerText)/* coming back as undefined when '.class', changed to '.innterText'   */
-    console.log(pairArray[1].innerText)
     comparePairs()
   }
 }
 
 function comparePairs () {
   if (pairArray[0].innerText === pairArray[1].innerText) {
-    console.log(pairArray)
-    matchedCards.push(pairArray[0], pairArray[1])
-    console.log("You've made a match!")
+    handleMatchedCards(pairArray)
+  } else {
+    handleUnMatchedCards(pairArray)
+  }
+}
 
-    let matchedElements = (document.getElementsByClassName('not_yet_compared'))
-    console.log(matchedElements)
+function handleUnMatchedCards (pairArray) {
+  pairArray.pop()
+  pairArray.shift()
+  console.log('This is the pairArray >>> ' + pairArray)
 
-    matchedElements[0].classList.remove('faceup')
-    matchedElements[0].classList.add('leave_faceup')
-    matchedElements[1].classList.remove('faceup')
-    matchedElements[1].classList.add('leave_faceup')
+  let nonMatchedElements = (document.getElementsByClassName('not_yet_compared'))
 
-    matchedElements[1].classList.remove('not_yet_compared')
-    matchedElements[0].classList.remove('not_yet_compared')
+  setTimeout(function () {
+    nonMatchedElements[0].addEventListener('click', onClick)
+    nonMatchedElements[1].addEventListener('click', onClick)
 
-    console.log(matchedElements)
+    nonMatchedElements[0].classList.remove('faceup')
+    nonMatchedElements[0].classList.add('facedown')
+    nonMatchedElements[1].classList.remove('faceup')
+    nonMatchedElements[1].classList.add('facedown')
+    nonMatchedElements[1].classList.remove('not_yet_compared')
+    nonMatchedElements[0].classList.remove('not_yet_compared')
 
-    pairArray.pop()
-    pairArray.shift()
-    console.log(pairArray)
+    console.log('The non-matched cards array should now be empty: ', (nonMatchedElements))
+  }, 700)
+}
 
-    console.log('The matched cards array should now list accumulating matches: ', (matchedCards))
-  } else {  // *equivalent to condition: (pairArray[0] !== pairArray[1])*/
-    console.log('No match!')
+function handleMatchedCards (pairArray) {
+  console.log(pairArray)
+  matchedCards.push(pairArray[0], pairArray[1])
+  console.log("You've made a match!")
 
-    pairArray.pop()
-    pairArray.shift()
-    console.log(pairArray)
+  let matchedElements = (document.getElementsByClassName('not_yet_compared'))
+  console.log(matchedElements)
 
-    let nonMatchedElements = (document.getElementsByClassName('not_yet_compared'))
-    console.log(nonMatchedElements)
+  matchedElements[0].classList.remove('faceup')
+  matchedElements[0].classList.add('leave_faceup')
+  matchedElements[1].classList.remove('faceup')
+  matchedElements[1].classList.add('leave_faceup')
 
-    let delay = 500  //  Time for player to see the card face on mismatched cards */
-    setTimeout(function () {
-      nonMatchedElements[0].addEventListener('click', onClick)
-      nonMatchedElements[1].addEventListener('click', onClick)
+  matchedElements[1].classList.remove('not_yet_compared')
+  matchedElements[0].classList.remove('not_yet_compared')
 
-      nonMatchedElements[0].classList.remove('faceup')
-      nonMatchedElements[0].classList.add('facedown')
-      nonMatchedElements[1].classList.remove('faceup')
-      nonMatchedElements[1].classList.add('facedown')
-      nonMatchedElements[1].classList.remove('not_yet_compared')
-      nonMatchedElements[0].classList.remove('not_yet_compared')
+  console.log(matchedElements)
 
-      console.log('The non-matched cards array should now be empty: ', (nonMatchedElements))
-    }, delay)
+  pairArray.pop()
+  pairArray.shift()
+  console.log(pairArray)
+
+  console.log('The matched cards array should now list accumulating matches: ', (matchedCards))
+}
+
+function gameTimer () {
+  setTimeout(function () {
+    let cards = document.getElementsByClassName('singleCard')
+    for (let i = cards.length - 1; i > -1; i--) {
+      cards[i].parentNode.removeChild(cards[i])
+    }
+    let gameOverAlert = document.createElement('div')
+    gameOverAlert.classList.add('game_over')
+    gameOverAlert.innerText = 'Game over'
+    textframe.appendChild(gameOverAlert)
+
+    let matchScore = document.createElement('h3')
+    matchScore.innerText = anyMatches()
+    textframe.appendChild(matchScore)
+  }, 30000) /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
+}
+
+function anyMatches () {
+  let matches = matchedCards.length / 2
+  if (matches === 0) {
+    return "You didn't find any matches. If you want to play again, refresh the page."
+  } else if (matches === 1) {
+    return 'You found 1 match. If you want to play again, refresh the page.'
+  } else if (matches >= 2) {
+    return 'You found ' + matches + ' matches!\n\nIf you want to play again, refresh the page.'
   }
 }

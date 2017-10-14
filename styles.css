@@ -21,7 +21,7 @@ Pattern taken from - http://www.heropatterns.com/
 
 h1 {
   font-family: 'Righteous', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.4em;
   color: #7C8DD5;
   display: inline;
   margin: 2.5% 0 2.5% 0;
@@ -37,11 +37,19 @@ h5{
 
 h3{
   font-family: 'Quicksand', sans-serif;
-  font-size: 0.3em;
   color: #7C8DD5;
   display: inline;
-  text-align: end;
   margin: 0;
+}
+
+.htag_holder h3{
+  text-align: end;
+  font-size: 0.3em;
+}
+
+#display_column_align h3{
+  font-size: 0.6em;
+  width: 60%;
 }
 
 h2{
@@ -86,15 +94,7 @@ header {
 
 /******Cluster Game Board Grad Styling boxes here ************/
 
-#gameboard_wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin: -5px 0 0 -5px;
-  position: static;
-}
-
-.gameboard_wrapper_solid{
+#display_column_align{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,32 +104,34 @@ header {
   background-color: #F9F2E4;
 }
 
+#gameboard_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: -5px 0 0 -5px;
+  position: static;
+}
+
 .start_button{
-  width: 350px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  text-align: center;
   font-family: 'Righteous', sans-serif;
   font-size: 1.3em;
-  cursor: default;
   color: #7C8DD5;
-  border-color: #7C8DD5;
-  background-color: none;
-  box-sizing: border-box;
+  width: 60%;
+  margin: 30px;
   padding: 8px 0px;
+  border-color: #7C8DD5;
   border-width: 2px;
   border-style: dotted;
   border-radius: 5px;
 }
 
-span{
+.game_over{
   font-family: 'Righteous', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #7C8DD5;
   margin: 0 auto;
   margin-top: 30px;
 }
-
 
 .singleCard{
   padding: 0.3vh;
