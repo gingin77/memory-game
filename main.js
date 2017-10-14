@@ -2,7 +2,7 @@ let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', 
 let singleCard = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 30000
+let gameTime = 10000
 
 let gameboard = document.getElementById('gameboard_wrapper')
 
@@ -24,7 +24,6 @@ function gameStart (event) {
   removeStartFeatures()
   shuffle(deckOfMemoryCards)
   makeCards()
-  gameTimer()
   displayTime()
 }
 
@@ -113,37 +112,33 @@ function handleMatchedCards (pairArray) {
 }
 
 function displayTime () {
-  // let timeCounter = document.createElement('h3')
-  seconds_left = gameTime/1000
+  secondsLeft = gameTime / 1000
 
-  let interval = setInterval(function() {
-      document.getElementById('timer_display').innerHTML = --seconds_left
+  let interval = setInterval(function () {
+    document.getElementById('timer_display').innerHTML = --secondsLeft
 
-      if (seconds_left <= 0)
-      {
-         document.getElementById('timer_display').innerHTML = "Coordinate with Game Timer funciton....."
-         clearInterval(interval)
-      }
+    if (secondsLeft <= 0)
+    {
+      document.getElementById('timer_display').innerHTML = 'Out of time'
+      clearInterval(interval)
+      gameTimer()
+    }
   }, 1000)
-
-  gameboard.appendChild(timeCounter)
 }
 
 function gameTimer () {
-  setTimeout(function () {
-    let cards = document.getElementsByClassName('singleCard')
-    for (let i = cards.length - 1; i > -1; i--) {
-      cards[i].parentNode.removeChild(cards[i])
-    }
-    let gameOverAlert = document.createElement('div')
-    gameOverAlert.classList.add('game_over')
-    gameOverAlert.innerText = 'Game over'
-    textframe.appendChild(gameOverAlert)
+  let cards = document.getElementsByClassName('singleCard')
+  for (let i = cards.length - 1; i > -1; i--) {
+    cards[i].parentNode.removeChild(cards[i])
+  }
+  let gameOverAlert = document.createElement('div')
+  gameOverAlert.classList.add('game_over')
+  gameOverAlert.innerText = 'Game over'
+  textframe.appendChild(gameOverAlert)
 
-    let matchScore = document.createElement('h3')
-    matchScore.innerText = anyMatches()
-    textframe.appendChild(matchScore)
-  }, gameTime) /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
+  let matchScore = document.createElement('h3')
+  matchScore.innerText = anyMatches()
+  textframe.appendChild(matchScore)
 }
 
 function anyMatches () {
