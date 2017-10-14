@@ -1,6 +1,7 @@
 let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(']
 let singleCard = ''
-let matchedCards = [] /*  this array is to hold cards that have been matched and no longer have an eventlistener on them. class should be 'leave_faceup'  */
+let pairArray = []
+let matchedCards = []
 
 let gameboard = document.getElementById('gameboard_wrapper')
 
@@ -57,19 +58,14 @@ function makeCards () {
   }
 }
 
-let pairArray = []
-
 function onClick (i) {
   let clickedCard = event.target
-  console.log('A card has been flipped')
   clickedCard.classList.remove('facedown')
   clickedCard.classList.add('faceup', 'not_yet_compared')
-  // clickedCard.classList.add()
   clickedCard.removeEventListener('click', onClick)
   pairArray.push(clickedCard)
 
   if (pairArray.length === 2) {
-    console.log('A 2nd card has been flipped')
     comparePairs()
   }
 }
@@ -83,34 +79,25 @@ function comparePairs () {
 }
 
 function handleUnMatchedCards (pairArray) {
-  pairArray.pop()
-  pairArray.shift()
-  console.log('This is the pairArray >>> ' + pairArray)
-
+  pairArray.length = 0
   let nonMatchedElements = (document.getElementsByClassName('not_yet_compared'))
 
   setTimeout(function () {
-    nonMatchedElements[0].addEventListener('click', onClick)
-    nonMatchedElements[1].addEventListener('click', onClick)
-
+    for (let i = 0; i < nonMatchedElements.length; i++) {
+      nonMatchedElements[i].addEventListener('click', onClick)
+    }
     nonMatchedElements[0].classList.remove('faceup')
     nonMatchedElements[0].classList.add('facedown')
     nonMatchedElements[1].classList.remove('faceup')
     nonMatchedElements[1].classList.add('facedown')
     nonMatchedElements[1].classList.remove('not_yet_compared')
     nonMatchedElements[0].classList.remove('not_yet_compared')
-
-    console.log('The non-matched cards array should now be empty: ', (nonMatchedElements))
   }, 700)
 }
 
 function handleMatchedCards (pairArray) {
-  console.log(pairArray)
   matchedCards.push(pairArray[0], pairArray[1])
-  console.log("You've made a match!")
-
   let matchedElements = (document.getElementsByClassName('not_yet_compared'))
-  console.log(matchedElements)
 
   matchedElements[0].classList.remove('faceup')
   matchedElements[0].classList.add('leave_faceup')
@@ -120,13 +107,7 @@ function handleMatchedCards (pairArray) {
   matchedElements[1].classList.remove('not_yet_compared')
   matchedElements[0].classList.remove('not_yet_compared')
 
-  console.log(matchedElements)
-
-  pairArray.pop()
-  pairArray.shift()
-  console.log(pairArray)
-
-  console.log('The matched cards array should now list accumulating matches: ', (matchedCards))
+  pairArray.length = 0
 }
 
 function gameTimer () {
