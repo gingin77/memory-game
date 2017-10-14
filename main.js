@@ -13,25 +13,27 @@ function shuffle (array) {
   return array
 }
 console.log(deckOfMemoryCards)
-let div = document.getElementById('gameboard_wrapper')
-div.setAttribute('class', 'gameboard_wrapper_solid')
+let gameboard = document.getElementById('gameboard_wrapper')
+gameboard.setAttribute('class', 'gameboard_wrapper_solid')
 
 let startButton = document.createElement('div')
-div.appendChild(startButton)
+gameboard.appendChild(startButton)
 startButton.classList.add('start_button')
 startButton.addEventListener('click', gameStart)
 startButton.innerText = 'Play'
 
 let gameDirections = document.createElement('h3')
 gameDirections.innerText = 'Hit play to start the game timer!'
-div.appendChild(gameDirections)
+gameboard.appendChild(gameDirections)
 
 function gameStart (event) {
   shuffle(deckOfMemoryCards)
   removeStartFeatures(event)
-  div.classList.add('gameboard_wrapper')
+  makeCards(event)
+  startTimer(event)
+}
 
-// Render elements to represent the cards with a for loop
+function makeCards (event) {
   for (let i = 0; i < deckOfMemoryCards.length; i++) {
     let label = document.createElement('label')
     label.classList.add(deckOfMemoryCards[ i ])
@@ -41,30 +43,32 @@ function gameStart (event) {
     let icon = document.createTextNode(deckOfMemoryCards[i])
     label.innerText = icon.textContent
 
-    div.appendChild(label)
+    gameboard.appendChild(label)
   }
+}
 
+function startTimer (event) {
   setTimeout(function () {
     let endOfGame = document.createElement('span')
     endOfGame.innerText = 'Game over'
-    // div.appendChild(some text about game being over..... I think???)
+    // gameboard.appendChild(some text about game being over..... I think???)
 
     let cardDeck = document.getElementsByTagName('label')
     console.log(typeof cardDeck)
     console.log(cardDeck)
 
-    let i = 0
-    while (i < cardDeck.length) {
-      cardDeck.length[i].parentNode.removeChild(cardDeck.length[i])
-      i++
-    }
+    // let i = 0
+    // while (i < cardDeck.length) {
+    //   cardDeck.length[i].parentNode.removeChild(cardDeck.length[i])
+    //   i++
+    // }
   }, 2000)  /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
 }
 
 function removeStartFeatures () {
   startButton.remove(startButton)
   gameDirections.remove(gameDirections)
-  div.classList.remove('gameboard_wrapper_solid')
+  gameboard.classList.remove('gameboard_wrapper_solid')
   console.log('The start features have been removed')
 }
 
@@ -128,7 +132,7 @@ function comparePairs () {
     let nonMatchedElements = (document.getElementsByClassName('not_yet_compared'))
     console.log(nonMatchedElements)
 
-    let delay = 1500  //  *time for player to see the card face on mismatched cards*/
+    let delay = 500  //  Time for player to see the card face on mismatched cards */
     setTimeout(function () {
       nonMatchedElements[0].addEventListener('click', onClick)
       nonMatchedElements[1].addEventListener('click', onClick)
