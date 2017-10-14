@@ -30,39 +30,38 @@ function gameStart (event) {
   shuffle(deckOfMemoryCards)
   removeStartFeatures(event)
   makeCards(event)
-  startTimer(event)
+  gameTimer(event)
 }
 
+let singleCard = ''
 function makeCards (event) {
   for (let i = 0; i < deckOfMemoryCards.length; i++) {
-    let label = document.createElement('label')
-    label.classList.add(deckOfMemoryCards[ i ])
-    label.classList.add('facedown')
-    label.addEventListener('click', onClick)
+    singleCard = document.createElement('div')
+    singleCard.classList.add(deckOfMemoryCards[ i ])
+    singleCard.classList.add('facedown', 'singleCard')
+    singleCard.addEventListener('click', onClick)
 
     let icon = document.createTextNode(deckOfMemoryCards[i])
-    label.innerText = icon.textContent
+    singleCard.innerText = icon.textContent
 
-    gameboard.appendChild(label)
+    gameboard.appendChild(singleCard)
   }
 }
 
-function startTimer (event) {
+function gameTimer (event) {
   setTimeout(function () {
     let endOfGame = document.createElement('span')
     endOfGame.innerText = 'Game over'
-    // gameboard.appendChild(some text about game being over..... I think???)
+    gameboard.appendChild(endOfGame)
 
-    let cardDeck = document.getElementsByTagName('label')
-    console.log(typeof cardDeck)
-    console.log(cardDeck)
+    let cards = document.getElementsByClassName('singleCard')
+    console.log(typeof cards)
+    console.log(cards)
 
-    // let i = 0
-    // while (i < cardDeck.length) {
-    //   cardDeck.length[i].parentNode.removeChild(cardDeck.length[i])
-    //   i++
-    // }
-  }, 2000)  /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
+    for (let i = cards.length - 1; i > -1; i--) {
+      cards[i].parentNode.removeChild(cards[i])
+    }
+  }, 20000)  /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
 }
 
 function removeStartFeatures () {
@@ -72,7 +71,6 @@ function removeStartFeatures () {
   console.log('The start features have been removed')
 }
 
-// The 'click' event listener was added to 'label' in the loop above.
 // Next, define variables and write the function for what happens onClick
 
 let pairArray = [] /* this array is to hold 2 cards until they get compared.  */

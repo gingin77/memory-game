@@ -54,6 +54,8 @@ h2{
   font-size: 1em;
 }
 
+
+
 /******Cluster Header Styling boxes here ************/
 
 header {
@@ -120,18 +122,22 @@ header {
   border-radius: 5px;
 }
 
+span{
+  font-family: 'Righteous', sans-serif;
+  font-size: 1.3em;
+  color: #7C8DD5;
+  margin: 0 auto;
+  margin-top: 30px;
+}
 
-label{
+
+.singleCard{
   padding: 0.3vh;
-  /*box-sizing: border-box; doesn't seem to do anything*/
-  /*width: 100%;*/
-  /*height: 100%;*/
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 7px;
   flex: 1 0 18%;
-  /*height: 15%;*/
   border-radius: 5px;
   border: 2px solid;
 }
