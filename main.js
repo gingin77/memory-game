@@ -2,6 +2,7 @@ let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', 
 let singleCard = ''
 let pairArray = []
 let matchedCards = []
+let gameTime = 30000
 
 let gameboard = document.getElementById('gameboard_wrapper')
 
@@ -24,6 +25,7 @@ function gameStart (event) {
   shuffle(deckOfMemoryCards)
   makeCards()
   gameTimer()
+  displayTime()
 }
 
 function removeStartFeatures () {
@@ -110,6 +112,23 @@ function handleMatchedCards (pairArray) {
   pairArray.length = 0
 }
 
+function displayTime () {
+  // let timeCounter = document.createElement('h3')
+  seconds_left = gameTime/1000
+
+  let interval = setInterval(function() {
+      document.getElementById('timer_display').innerHTML = --seconds_left
+
+      if (seconds_left <= 0)
+      {
+         document.getElementById('timer_display').innerHTML = "Coordinate with Game Timer funciton....."
+         clearInterval(interval)
+      }
+  }, 1000)
+
+  gameboard.appendChild(timeCounter)
+}
+
 function gameTimer () {
   setTimeout(function () {
     let cards = document.getElementsByClassName('singleCard')
@@ -124,7 +143,7 @@ function gameTimer () {
     let matchScore = document.createElement('h3')
     matchScore.innerText = anyMatches()
     textframe.appendChild(matchScore)
-  }, 30000) /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
+  }, gameTime) /*  Give player 180,000 ms but leave at 30,000 while troubleshooting  */
 }
 
 function anyMatches () {
