@@ -2,13 +2,13 @@ let gamecardUniqueArray = [ 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[
 
 function shuffle (array) {
   let al = array.length
-  let t = ''
+  let exchangedCard = ''
   let i = ''
   while (al) {
     i = Math.floor(Math.random() * al--)
-    t = array[al]
+    exchangedCard = array[al]
     array[al] = array[i]
-    array[i] = t
+    array[i] = exchangedCard
   }
   return array
 }
