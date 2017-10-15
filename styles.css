@@ -198,17 +198,14 @@ img {
 }
 
 .singleCard{
-  /*padding: 0.8vh; /* 0.9vh */*/
-  /*padding: 5% 0 5% 0;*/
-  padding: 1.7vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /*margin: 0.1%; /* 2.8% */*/
-  margin: 1.4%;
-  flex: 0 0 10%;
   border-radius: 5px;
   border: 2px solid;
+  padding: 1.8vh;
+  margin: 3%;
+  flex: 0 0 15%;
 }
 
 .facedown{
@@ -231,18 +228,22 @@ img {
   color: #7C8DD5;
 }
 
-/*@media screen and (min-width: 760px){*/
-  /*.page_wrapper {
-    margin-top: 0.2%;
-    font-size: 5.8vw;
-  }*/
 
+
+/**************** Desktop Styles ***********************/
+@media screen and (min-width: 320px){
   .singleCard {
     padding: 1.7vh;
     margin: 1.4%;
+    flex: 0 0 10%;
   }
+}
 
-  /*header {
-    /*margin: 2% 0 2% 0;*/
-  }*/
+/**************** Desktop Styles ***********************/
+@media screen and (min-width: 900px){
+  .singleCard {
+    padding: 1.7vh;
+    margin: 1.4%;
+    flex: 0 0 10%;
+  }
 }
