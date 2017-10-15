@@ -27,7 +27,7 @@ Pattern taken from - http://www.heropatterns.com/
 
 h1 {
   font-family: 'Righteous', sans-serif;
-  font-size: 1.4em;
+  font-size: 2em;
   color: #7C8DD5;
   display: inline;
   margin: 1% 0 1% 0;
@@ -55,7 +55,7 @@ h3{
 
 #header_container .htag_holder h3{
   text-align: end;
-  font-size: 0.3em;
+  font-size: 0.5em;
 }
 
 #display_column_align h3{
@@ -67,10 +67,11 @@ h3{
 
 header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   text-align: center;
+  height: 60vh;
 }
 
 .header_game_time{
@@ -143,10 +144,8 @@ header {
 
 .htag_holder{
   display: flex;
-  /*align-items: space-around; << seems to not be allowed ??? */
   flex-direction: column;
-  width: 40%;
-  /*text-align: justify; positioning styles were placed on h1 and h3 instead of here*/
+  font-size: 12vw;
 }
 
 
@@ -162,6 +161,7 @@ header {
   width: 100%;
   height: 50%;
   background-color: #F9F2E4;
+  font-size: 12vw;
 }
 
 #gameboard_wrapper {
@@ -240,6 +240,27 @@ img {
 
   #gameboard_wrapper{
     margin-top: 5%;
+  }
+
+  header {
+    /*height: 60vh; */
+    /*flex-direction: row;*/
+  }
+
+  .htag_holder{
+    width: 40%;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  #header_container .htag_holder h3{
+    font-size: 0.5em;
+  }
+
+  #display_column_align{
+    font-size: ;
   }
 }
 
