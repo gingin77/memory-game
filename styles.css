@@ -8,7 +8,7 @@ Pattern taken from - http://www.heropatterns.com/
 */
 
 .page_wrapper{
-  border: solid;
+  /*border: solid;*/
   margin-top: 1%;
   font-family: wingdings;
   font-size: 8.832vw; /* was 8.8vw */
@@ -131,7 +131,7 @@ header {
   margin: 2%; /* 2.8% */
   flex: 1 0 22%;
   border-radius: 5px;
-  /*border: 2px solid;*/
+  border: 2px solid;
 }
 
 .facedown{
@@ -144,4 +144,37 @@ header {
 .faceup, .leave_faceup{
   background-color: #f9f2e4;
   color: #7C8DD5;
+}
+
+@media screen and (min-width: 760px){
+  .page_wrapper {
+    border: solid;
+    margin-top: 0.2%;
+    font-size: 5.8vw;
+  }
+
+  .singleCard {
+    padding: 1.7vh;
+    margin: 1.4%;
+  }
+
+  header {
+    margin: 2% 0 2% 0;
+  }
+}
+
+@media screen and (min-width: 760px){
+  .page_wrapper {
+    margin-top: 0.2%;
+    font-size: 5.8vw;
+  }
+
+  .singleCard {
+    padding: 1.7vh;
+    margin: 1.4%;
+  }
+
+  header {
+    margin: 2% 0 2% 0;
+  }
 }

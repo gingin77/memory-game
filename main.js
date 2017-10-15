@@ -1,4 +1,19 @@
-let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(']
+// let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(']
+let deckOfMemoryCards = [
+  ['Q', 'images/Q_plane.png'],
+  ['per', 'images/period_mailbox.png'],
+  ['para', 'images/paran_phone.png'],
+  ['N', 'images/N_skull.png'],
+  ['6', 'images/6_timer.png'],
+  ['A', 'images/A_peace_hand.png'],
+  ['I', 'images/I_hand.png'],
+  ['J', 'images/J_smile.png'],
+  ['L', 'images/L_frown.png'],
+  ['T', 'images/T_snowflake.png'],
+  ['brak', 'images/bracket_yinyang.png'],
+  ['M', 'images/M_bomb.png']
+]
+
 let singleCard = ''
 let pairArray = []
 let matchedCards = []
@@ -45,17 +60,23 @@ function shuffle (array) {
   }
   return array
 }
+// let deckOfMemoryCards = [['Q', '.images/Q_plane.png'], ['.', 'images/period_mailbox.png'], ['(', '.images/paran_phone.png'], ['Q', '.images/Q_plane.png'], ['.', 'images/period_mailbox.png'], ['(', '.images/paran_phone.png']]
 
 function makeCards () {
   for (let i = 0; i < deckOfMemoryCards.length; i++) {
     singleCard = document.createElement('div')
-    singleCard.classList.add(deckOfMemoryCards[i])
+    singleCard.classList.add(deckOfMemoryCards[i][0])
     singleCard.classList.add('facedown', 'singleCard')
     singleCard.addEventListener('click', onClick)
 
-    let icon = document.createTextNode(deckOfMemoryCards[i])
-    singleCard.innerText = icon.textContent
+    let cardImage = document.createElement('img')
+    cardImage.setAttribute('src', (deckOfMemoryCards[i][1]))
+    singleCard.appendChild(cardImage)
     gameboard.appendChild(singleCard)
+
+    // let icon = document.createTextNode(deckOfMemoryCards[i])
+    // singleCard.innerText = icon.textContent
+    // gameboard.appendChild(singleCard)
   }
 }
 
