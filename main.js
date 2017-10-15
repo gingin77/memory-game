@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 200000
+let gameTime = 5000
 
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
@@ -178,7 +178,7 @@ function displayTime () {
 
     if (secondsLeft <= 0)
     {
-      changingText.innerHTML = 'Out of time'
+      changingText.innerHTML = 'out of time'
       clearInterval(interval)
       gameOverDisplay()
     }

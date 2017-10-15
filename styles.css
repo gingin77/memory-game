@@ -65,7 +65,6 @@ h3{
 /******Cluster Header Styling boxes here ************/
 
 header {
-  /*margin: 5% 0 2.5% 0;*/
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -74,21 +73,20 @@ header {
 }
 
 .header_game_time{
-  grid-template-columns: repeat(4, 70px);
-  grid-template-rows: repeat(3, 10px);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  display: inline;
+}
+.header_game_time .htag_holder h1{
+  position: relative;
+  padding-left: 8%;
 }
 
-.htag_holder{
-  grid-column: 1/ span 3;
-  grid-row: 1 /span 3;
+.header_game_time h3{
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  z-index: 1;
 }
 
-#timer_display{
-  grid-column: 4;
-  grid-row: 3;
-}
 
 #symbols img{
   width: 30%;
