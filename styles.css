@@ -230,12 +230,34 @@ img {
 
 
 
-/**************** Desktop Styles ***********************/
+/**************** Larger phone ***********************/
 @media screen and (min-width: 320px){
   .singleCard {
-    padding: 1.7vh;
-    margin: 1.4%;
-    flex: 0 0 10%;
+    padding: 1.9vh;
+    margin: 1.2% 1%;
+    flex: 0 0 13%;
+  }
+
+  #gameboard_wrapper{
+    margin-top: 5%;
+  }
+}
+
+/**************** Tablet ***********************/
+@media screen and (min-width: 600px){
+  .singleCard {
+    padding: 0.1vh 4.2vw;
+    margin: 1%;
+    flex: 1 0 10%;
+  }
+
+  #gameboard_wrapper{
+    margin-top: 0;
+  }
+
+  img {
+    width: 70%;
+    height: auto;
   }
 }
 
