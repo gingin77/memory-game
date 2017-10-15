@@ -8,11 +8,13 @@ Pattern taken from - http://www.heropatterns.com/
 */
 
 .page_wrapper{
+  border: solid;
+  margin-top: 1%;
   font-family: wingdings;
-  font-size: 6.0vw;
+  font-size: 8.832vw; /* was 8.8vw */
   background-color: #F9F2E4;
-  width: 70%;
-  height: 100vh;
+  width: 95%; /*  70% may be better for wider views: */;
+  height: 98vh;
   text-align: center;
   margin: 0 auto;
   position: relative;
@@ -52,27 +54,15 @@ h3{
   width: 60%;
 }
 
-h2{
-  font-family: 'Quicksand', sans-serif;
-  color: #7C8DD5;
-  display: inline;
-  text-align: center;
-  margin: auto;
-  margin-top: 50px;
-  font-size: 1em;
-}
-
-
-
 /******Cluster Header Styling boxes here ************/
 
 header {
+  margin: 5% 0 2.5% 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  /*padding-top: 2.5%;*/
   padding-bottom: 2%;
 
 }
@@ -134,14 +124,14 @@ header {
 }
 
 .singleCard{
-  padding: 0.3vh;
+  padding: 1.2vh; /* 0.9vh */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7px;
-  flex: 1 0 18%;
+  margin: 2%; /* 2.8% */
+  flex: 1 0 22%;
   border-radius: 5px;
-  border: 2px solid;
+  /*border: 2px solid;*/
 }
 
 .facedown{

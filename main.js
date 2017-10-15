@@ -2,7 +2,7 @@ let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', 
 let singleCard = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 10000
+let gameTime = 1000000
 
 let gameboard = document.getElementById('gameboard_wrapper')
 
