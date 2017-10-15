@@ -57,13 +57,13 @@ h3{
 /******Cluster Header Styling boxes here ************/
 
 header {
-  margin: 5% 0 2.5% 0;
+  /*margin: 5% 0 2.5% 0;*/
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  padding-bottom: 2%;
+  /*padding-bottom: 2%;*/
 
 }
 
@@ -96,9 +96,10 @@ header {
 
 #gameboard_wrapper {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: -5px 0 0 -5px;
+  /*margin: -5px 0 0 -5px;*/
   position: static;
 }
 
@@ -123,13 +124,19 @@ header {
   margin-top: 30px;
 }
 
+img {
+    width: 80%;
+    height: auto;
+}
+
 .singleCard{
-  padding: 1.2vh; /* 0.9vh */
+  /*padding: 0.8vh; /* 0.9vh */*/
+  padding: 5% 0 5% 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2%; /* 2.8% */
-  flex: 1 0 22%;
+  margin: 0.1%; /* 2.8% */
+  flex: 0 0 10%;
   border-radius: 5px;
   border: 2px solid;
 }
@@ -156,7 +163,6 @@ header {
 
 @media screen and (min-width: 760px){
   .page_wrapper {
-    border: solid;
     margin-top: 0.2%;
     font-size: 5.8vw;
   }
@@ -167,22 +173,6 @@ header {
   }
 
   header {
-    margin: 2% 0 2% 0;
-  }
-}
-
-@media screen and (min-width: 760px){
-  .page_wrapper {
-    margin-top: 0.2%;
-    font-size: 5.8vw;
-  }
-
-  .singleCard {
-    padding: 1.7vh;
-    margin: 1.4%;
-  }
-
-  header {
-    margin: 2% 0 2% 0;
+    /*margin: 2% 0 2% 0;*/
   }
 }
