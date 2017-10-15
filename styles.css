@@ -71,8 +71,23 @@ header {
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  /*padding-bottom: 2%;*/
+}
 
+.header_game_time{
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: repeat(3, 10px);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.htag_holder{
+  grid-column: 1/ span 3;
+  grid-row: 1 /span 3;
+}
+
+#timer_display{
+  grid-column: 4;
+  grid-row: 3;
 }
 
 #symbols img{

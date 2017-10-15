@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 20000
+let gameTime = 200000
 
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
@@ -60,7 +60,10 @@ function gameStart (event) {
 
 function headerGameDisplay () {
   changingText.innerText = ''
+  headerContainer.classList.add('header_game_time')
+  // changingText.classList.add('header_game_time_text')
   headerContainer.appendChild(changingText)
+
   symbols.remove(symbols)
 }
 
