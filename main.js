@@ -1,8 +1,7 @@
-// let deckOfMemoryCards = ['A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(', 'A', 'N', 'Q', 'T', '6', 'J', 'M', 't', 'o', 'L', '[', '(']
 let deckOfMemoryCards = [
   ['Q', 'images/Q_plane.png'],
-  ['per', 'images/period_mailbox.png'],
-  ['para', 'images/paran_phone.png'],
+  ['D', 'images/period_mailbox.png'],
+  ['P', 'images/paran_phone.png'],
   ['N', 'images/N_skull.png'],
   ['6', 'images/6_timer.png'],
   ['A', 'images/A_peace_hand.png'],
@@ -10,11 +9,24 @@ let deckOfMemoryCards = [
   ['J', 'images/J_smile.png'],
   ['L', 'images/L_frown.png'],
   ['T', 'images/T_snowflake.png'],
-  ['brak', 'images/bracket_yinyang.png'],
+  ['B', 'images/bracket_yinyang.png'],
+  ['M', 'images/M_bomb.png'],
+  ['Q', 'images/Q_plane.png'],
+  ['D', 'images/period_mailbox.png'],
+  ['P', 'images/paran_phone.png'],
+  ['N', 'images/N_skull.png'],
+  ['6', 'images/6_timer.png'],
+  ['A', 'images/A_peace_hand.png'],
+  ['I', 'images/I_hand.png'],
+  ['J', 'images/J_smile.png'],
+  ['L', 'images/L_frown.png'],
+  ['T', 'images/T_snowflake.png'],
+  ['B', 'images/bracket_yinyang.png'],
   ['M', 'images/M_bomb.png']
 ]
 
 let singleCard = ''
+let cardImage = ''
 let pairArray = []
 let matchedCards = []
 let gameTime = 1000000
@@ -60,7 +72,6 @@ function shuffle (array) {
   }
   return array
 }
-// let deckOfMemoryCards = [['Q', '.images/Q_plane.png'], ['.', 'images/period_mailbox.png'], ['(', '.images/paran_phone.png'], ['Q', '.images/Q_plane.png'], ['.', 'images/period_mailbox.png'], ['(', '.images/paran_phone.png']]
 
 function makeCards () {
   for (let i = 0; i < deckOfMemoryCards.length; i++) {
@@ -69,14 +80,11 @@ function makeCards () {
     singleCard.classList.add('facedown', 'singleCard')
     singleCard.addEventListener('click', onClick)
 
-    let cardImage = document.createElement('img')
+    cardImage = document.createElement('img')
     cardImage.setAttribute('src', (deckOfMemoryCards[i][1]))
+    cardImage.classList.add('facedown_image')
     singleCard.appendChild(cardImage)
     gameboard.appendChild(singleCard)
-
-    // let icon = document.createTextNode(deckOfMemoryCards[i])
-    // singleCard.innerText = icon.textContent
-    // gameboard.appendChild(singleCard)
   }
 }
 
@@ -84,6 +92,10 @@ function onClick (i) {
   let clickedCard = event.target
   clickedCard.classList.remove('facedown')
   clickedCard.classList.add('faceup', 'not_yet_compared')
+
+  let childImage = clickedCard.childNodes[0]
+  childImage.classList.remove('facedown_image')
+  childImage.classList.add('faceup_image')
   clickedCard.removeEventListener('click', onClick)
   pairArray.push(clickedCard)
 
@@ -93,7 +105,9 @@ function onClick (i) {
 }
 
 function comparePairs () {
-  if (pairArray[0].innerText === pairArray[1].innerText) {
+  console.log(pairArray[0].className[0])
+  console.log(pairArray[1].className[0]);
+  if (pairArray[0].className[0] === pairArray[1].className[0]) {
     handleMatchedCards(pairArray)
   } else {
     handleUnMatchedCards(pairArray)
@@ -108,10 +122,20 @@ function handleUnMatchedCards (pairArray) {
     for (let i = 0; i < nonMatchedElements.length; i++) {
       nonMatchedElements[i].addEventListener('click', onClick)
     }
+
+    let childImageA = nonMatchedElements[0].childNodes[0]
+    let childImageB = nonMatchedElements[1].childNodes[0]
+
     nonMatchedElements[0].classList.remove('faceup')
     nonMatchedElements[0].classList.add('facedown')
+    childImageA.classList.remove('faceup_image')
+    childImageA.classList.add('facedown_image')
+
     nonMatchedElements[1].classList.remove('faceup')
     nonMatchedElements[1].classList.add('facedown')
+    childImageB.classList.remove('faceup_image')
+    childImageB.classList.add('facedown_image')
+
     nonMatchedElements[1].classList.remove('not_yet_compared')
     nonMatchedElements[0].classList.remove('not_yet_compared')
   }, 700)

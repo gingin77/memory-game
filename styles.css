@@ -141,6 +141,14 @@ header {
   border: 2px solid #7C8DD5;
 }
 
+.facedown_image{
+  visibility: hidden;
+}
+
+.faceup_image{
+  visibility: visible;
+}
+
 .faceup, .leave_faceup{
   background-color: #f9f2e4;
   color: #7C8DD5;
