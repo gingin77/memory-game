@@ -47,7 +47,12 @@ h3{
   margin: 0;
 }
 
-.htag_holder h3{
+#header_container h3 {
+  text-align: end;
+  font-size: 0.6em;
+}
+
+#header_container .htag_holder h3{
   text-align: end;
   font-size: 0.3em;
 }

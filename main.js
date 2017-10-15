@@ -59,7 +59,9 @@ function gameStart (event) {
 }
 
 function headerGameDisplay () {
+  changingText.innerText = ''
   headerContainer.appendChild(changingText)
+  symbols.remove(symbols)
 }
 
 function removeStartFeatures () {
