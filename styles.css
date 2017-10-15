@@ -12,9 +12,10 @@ Pattern taken from - http://www.heropatterns.com/
 .page_wrapper{
   /*border: solid;*/
   max-width: 1034px;
-  margin-top: 1%;
-  font-family: wingdings;
+  /*margin-top: 1%;*/
+  margin-top: 0.2%;
   font-size: 8.832vw; /* was 8.8vw */
+  font-size: 5.8vw;
   background-color: #F9F2E4;
   width: 95%; /*  70% may be better for wider views: */;
   height: 98vh;
@@ -58,7 +59,7 @@ h3{
 }
 
 #display_column_align h3{
-  font-size: 0.6em;
+  font-size: 0.5em;
   width: 60%;
 }
 
@@ -198,11 +199,13 @@ img {
 
 .singleCard{
   /*padding: 0.8vh; /* 0.9vh */*/
-  padding: 5% 0 5% 0;
+  /*padding: 5% 0 5% 0;*/
+  padding: 1.7vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.1%; /* 2.8% */
+  /*margin: 0.1%; /* 2.8% */*/
+  margin: 1.4%;
   flex: 0 0 10%;
   border-radius: 5px;
   border: 2px solid;
@@ -228,18 +231,18 @@ img {
   color: #7C8DD5;
 }
 
-@media screen and (min-width: 760px){
-  .page_wrapper {
+/*@media screen and (min-width: 760px){*/
+  /*.page_wrapper {
     margin-top: 0.2%;
     font-size: 5.8vw;
-  }
+  }*/
 
   .singleCard {
     padding: 1.7vh;
     margin: 1.4%;
   }
 
-  header {
+  /*header {
     /*margin: 2% 0 2% 0;*/
-  }
+  }*/
 }
