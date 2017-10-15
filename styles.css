@@ -7,8 +7,11 @@ font-family:
 Pattern taken from - http://www.heropatterns.com/
 */
 
+/* Current attributes are for dimension 1080 x 714. A stretch limit is needed to keep all cards above the lower vertical cutoff */
+
 .page_wrapper{
   /*border: solid;*/
+  max-width: 1034px;
   margin-top: 1%;
   font-family: wingdings;
   font-size: 8.832vw; /* was 8.8vw */
@@ -26,7 +29,7 @@ h1 {
   font-size: 1.4em;
   color: #7C8DD5;
   display: inline;
-  margin: 2.5% 0 2.5% 0;
+  margin: 1% 0 1% 0;
   text-align: start;
 }
 
@@ -67,10 +70,53 @@ header {
 
 }
 
-.symbols{
-  width: 20%;
+.symbols img{
+  width: 40%;
   /*margin-bottom: -20px;*/
 }
+
+.symbols {
+  display: grid;
+  grid-template-columns: repeat(10, 70px);
+  grid-template-rows: repeat(10, 10px);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+}
+.one {
+  grid-column: 1/ span 2;
+  grid-row: 5;
+}
+.two {
+  grid-column: 2 /span 2;
+  grid-row: 3;
+}
+.three {
+  grid-column: 3 /span 2;
+  grid-row: 1 /span 3;
+}
+.four {
+    grid-column: 5 /span 2;
+    grid-row: 3;
+}
+.five {
+  grid-column: 4 /span 2;
+  grid-row: 8 /span 2;
+}
+.six {
+  grid-column: 5 /span 2;
+  grid-row: 10 ;
+}
+
+.seven {
+  grid-column: 8 /span 2;
+  grid-row: 8 ;
+}
+
+.eight {
+  grid-column: 3 /span 2;
+  grid-row: 7 ;
+}
+
 
 .htag_holder{
   display: flex;
@@ -85,6 +131,7 @@ header {
 /******Cluster Game Board Grad Styling boxes here ************/
 
 #display_column_align{
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
