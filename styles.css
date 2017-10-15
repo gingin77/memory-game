@@ -80,6 +80,7 @@ header {
 .header_game_time .htag_holder h1{
   position: relative;
   padding-left: 8%;
+  font-size: 1.3em;
 }
 
 .header_game_time h3{
@@ -204,7 +205,7 @@ img {
   border-radius: 5px;
   border: 2px solid;
   padding: 1.8vh;
-  margin: 3%;
+  margin: 2.5%;
   flex: 0 0 15%;
 }
 
