@@ -29,9 +29,12 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 1000000
+let gameTime = 20000
 
 let gameboard = document.getElementById('gameboard_wrapper')
+let headerContainer = document.getElementById('header_container')
+let changingText = document.getElementById('timer_display')
+let symbols = document.getElementById('symbols')
 
 let textframe = document.createElement('div')
 textframe.setAttribute('id', 'display_column_align')
@@ -52,12 +55,18 @@ function gameStart (event) {
   shuffle(deckOfMemoryCards)
   makeCards()
   displayTime()
+  headerGameDisplay()
+}
+
+function headerGameDisplay () {
+  headerContainer.appendChild(changingText)
 }
 
 function removeStartFeatures () {
   startButton.remove(startButton)
   gameDirections.remove(gameDirections)
   gameboard.classList.remove('gameboard_wrapper_at_start')
+  textframe.remove(textframe)
 }
 
 function shuffle (array) {
@@ -106,7 +115,7 @@ function onClick (i) {
 
 function comparePairs () {
   console.log(pairArray[0].className[0])
-  console.log(pairArray[1].className[0]);
+  console.log(pairArray[1].className[0])
   if (pairArray[0].className[0] === pairArray[1].className[0]) {
     handleMatchedCards(pairArray)
   } else {
@@ -160,22 +169,24 @@ function displayTime () {
   secondsLeft = gameTime / 1000
 
   let interval = setInterval(function () {
-    document.getElementById('timer_display').innerHTML = --secondsLeft
+    changingText.innerHTML = --secondsLeft
 
     if (secondsLeft <= 0)
     {
-      document.getElementById('timer_display').innerHTML = 'Out of time'
+      changingText.innerHTML = 'Out of time'
       clearInterval(interval)
-      gameTimer()
+      gameOverDisplay()
     }
   }, 1000)
 }
 
-function gameTimer () {
+function gameOverDisplay () {
   let cards = document.getElementsByClassName('singleCard')
   for (let i = cards.length - 1; i > -1; i--) {
     cards[i].parentNode.removeChild(cards[i])
   }
+  gameboard.appendChild(textframe)
+
   let gameOverAlert = document.createElement('div')
   gameOverAlert.classList.add('game_over')
   gameOverAlert.innerText = 'Game over'

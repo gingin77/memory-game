@@ -70,13 +70,13 @@ header {
 
 }
 
-.symbols img{
+#symbols img{
   width: 30%;
   /*margin-bottom: -20px;*/
 }
 
 
-.symbols {
+#symbols {
   display: grid;
   grid-template-columns: repeat(4, 70px);
   grid-template-rows: repeat(9, 10px);
@@ -150,8 +150,6 @@ header {
   justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
-  /*margin: -5px 0 0 -5px;*/
-  position: static;
 }
 
 .start_button{
