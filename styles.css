@@ -80,6 +80,7 @@ header {
 .header_game_time .htag_holder h1{
   position: relative;
   padding-left: 8%;
+  font-size: 1.3em;
 }
 
 .header_game_time h3{
@@ -204,7 +205,7 @@ img {
   border-radius: 5px;
   border: 2px solid;
   padding: 1.8vh;
-  margin: 3%;
+  margin: 2.5%;
   flex: 0 0 15%;
 }
 
@@ -238,9 +239,9 @@ img {
     flex: 0 0 13%;
   }
 
-  #gameboard_wrapper{
+  /*#gameboard_wrapper{
     margin-top: 5%;
-  }
+  }*/
 
   header {
     height: 55vh;
@@ -248,11 +249,12 @@ img {
 
   #display_column_align{
     margin-top: 0;
+    margin-top: 5%;
   }
 }
 
 /**************** Tablet ***********************/
-@media screen and (min-width: 600px){
+@media screen and (min-width: 560px){
   .singleCard {
     padding: 0.1vh 4.2vw;
     margin: 1%;
@@ -314,6 +316,7 @@ img {
 
   header {
     height: 20vh;
+    margin-top: 5%;
   }
 
   header .header_game_time{
@@ -325,7 +328,7 @@ img {
   }
 
   .header_game_time .htag_holder h1 {
-    font-size: 10vw;
+    font-size: 10vh;
   }
 
   .htag_holder {
