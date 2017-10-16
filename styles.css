@@ -243,24 +243,11 @@ img {
   }
 
   header {
-    /*height: 60vh; */
-    /*flex-direction: row;*/
-  }
-
-  .htag_holder{
-    width: 40%;
-  }
-
-  h1 {
-    font-size: 1.4em;
-  }
-
-  #header_container .htag_holder h3{
-    font-size: 0.5em;
+    height: 55vh;
   }
 
   #display_column_align{
-    font-size: ;
+    margin-top: 0;
   }
 }
 
@@ -280,6 +267,36 @@ img {
     width: 70%;
     height: auto;
   }
+
+  header {
+    flex-direction: row;
+    height: 30vh;
+    /*font-size: none;*/
+  }
+
+  #display_column_align{
+    margin-top: 5%;
+    font-size: 8vh;
+    margin-top: 0;
+  }
+
+
+  .htag_holder{
+    width: 40%;
+    font-size: 10vw;
+  }
+
+  h1 {
+    font-size: 12vw;
+  }
+
+  #header_container .htag_holder h3{
+    font-size: 0.2em;
+  }
+
+  .header_game_time .htag_holder h1 {
+    font-size: 10vw;
+  }
 }
 
 /**************** Desktop Styles ***********************/
@@ -288,5 +305,34 @@ img {
     padding: 1.7vh;
     margin: 1.4%;
     flex: 0 0 10%;
+  }
+
+  img {
+    width: 80%;
+    height: auto;
+  }
+
+  header {
+    height: 20vh;
+  }
+
+  header .header_game_time{
+    height: 10vh;
+  }
+
+  h1 {
+    font-size: 16vh;
+  }
+
+  .header_game_time .htag_holder h1 {
+    font-size: 10vw;
+  }
+
+  .htag_holder {
+    /*font-size: 5vw;*/
+  }
+
+  #display_column_align{
+    margin-top: 10%;
   }
 }
