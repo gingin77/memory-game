@@ -37,18 +37,18 @@ let changingText = document.getElementById('timer_display')
 let symbols = document.getElementById('symbols')
 
 let textframe = document.createElement('div')
-textframe.setAttribute('id', 'display_column_align')
-gameboard.appendChild(textframe)
+  textframe.setAttribute('id', 'display_column_align')
+  gameboard.appendChild(textframe)
 
 let startButton = document.createElement('div')
-textframe.appendChild(startButton)
-startButton.classList.add('start_button')
-startButton.addEventListener('click', gameStart)
-startButton.innerText = 'Play'
+  textframe.appendChild(startButton)
+  startButton.classList.add('start_button')
+  startButton.addEventListener('click', gameStart)
+  startButton.innerText = 'Play'
 
 let gameDirections = document.createElement('h3')
-gameDirections.innerText = 'Hit play to start the game timer!'
-textframe.appendChild(gameDirections)
+  gameDirections.innerText = 'Hit play to start the game timer!'
+  textframe.appendChild(gameDirections)
 
 function gameStart (event) {
   removeStartFeatures()
@@ -61,9 +61,7 @@ function gameStart (event) {
 function headerGameDisplay () {
   changingText.innerText = ''
   headerContainer.classList.add('header_game_time')
-  // changingText.classList.add('header_game_time_text')
   headerContainer.appendChild(changingText)
-
   symbols.remove(symbols)
 }
 
@@ -130,7 +128,7 @@ function comparePairs () {
 
 function handleUnMatchedCards (pairArray) {
   pairArray.length = 0
-  let nonMatchedElements = (document.getElementsByClassName('not_yet_compared'))
+  let nonMatchedElements = document.getElementsByClassName('not_yet_compared')
 
   setTimeout(function () {
     for (let i = 0; i < nonMatchedElements.length; i++) {
