@@ -93,7 +93,6 @@ header {
 
 #symbols img{
   width: 30%;
-  /*margin-bottom: -20px;*/
 }
 
 
@@ -239,16 +238,11 @@ img {
     flex: 0 0 13%;
   }
 
-  /*#gameboard_wrapper{
-    margin-top: 5%;
-  }*/
-
   header {
     height: 55vh;
   }
 
   #display_column_align{
-    margin-top: 0;
     margin-top: 5%;
   }
 }
@@ -256,9 +250,11 @@ img {
 /**************** Tablet ***********************/
 @media screen and (min-width: 560px){
   .singleCard {
-    padding: 3.5vh 4.2vw;
-    margin: 1.3%;
-    flex: 0 0 12%;
+    padding: 0.1vh 4.2vw;
+    margin: 1%;
+    flex: 1 0 10%;
+    /*padding: 3.5vh 4.2vw;
+    margin: 1.3%;*/
   }
 
   #gameboard_wrapper{
@@ -273,7 +269,8 @@ img {
   header {
     flex-direction: row;
     height: 30vh;
-    /*font-size: none;*/
+    /*height: 20vh;
++   margin-top: 5%;*/
   }
 
   #display_column_align{
@@ -301,12 +298,20 @@ img {
   }
 }
 
-/**************** Laptop Styles ***********************/
-@media screen and (min-width: 900px){
+/**************** Laptop Styles Narrow *********************/
+@media screen and (min-width: 849px){
+  .page_wrapper{
+    max-width: 806px;
+    width: 100%
+  }
+
   .singleCard {
-    padding: 2.1vh;
+    padding: 0.709px 35.5px;
+    margin: 8.031px;
+    flex: 0 0 9%;
+    /*padding: 2.1vh;
     margin: 1.1%;
-    flex: 0 0 14%;
+    flex: 0 0 14%;*/
   }
 
   img {
@@ -325,6 +330,7 @@ img {
 
   h1 {
     font-size: 11vw;
+    /*font-size: 16vh;*/
   }
 
   .header_game_time .htag_holder h1 {
@@ -332,25 +338,26 @@ img {
     /*font-size: 11vw; This was used in the desktop view... */
   }
 
-  .htag_holder {
-    /*font-size: 5vw;*/
-  }
-
   #display_column_align{
     margin-top: 10%;
   }
 }
 
-/**************** Laptop Styles ***********************/
-@media screen and (min-width: 1020px){
+/**************** Laptop Styles - Wider **********************/
+/*@media screen and (min-width: 1020px){
+  .page_wrapper{
+    max-width: 1000px;
+    width: 100%
+  }
+
   .singleCard {
     padding: 1.2vh 3vw;
     margin: 0.6% 1.2%;
     flex: 0.6 0 11%;
-  }
+  }*/
 
 /**************** Desktop Styles ***********************/
-@media screen and (min-width: 1400px){
+@media screen and (min-width: 1450px){
   h1, .header_game_time .htag_holder h1 {
     font-size: 11vh;
   }
