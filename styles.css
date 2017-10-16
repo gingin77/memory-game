@@ -323,9 +323,9 @@ img {
     height: 10vh;
   }
 
-  /*h1 {
-    font-size: 16vh;
-  }*/
+  h1 {
+    font-size: 11vw;
+  }
 
   h1, .header_game_time .htag_holder h1 {
     font-size: 11vw;
