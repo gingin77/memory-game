@@ -327,8 +327,9 @@ img {
     font-size: 11vw;
   }
 
-  h1, .header_game_time .htag_holder h1 {
-    font-size: 11vw;
+  .header_game_time .htag_holder h1 {
+    font-size: 10vh;
+    /*font-size: 11vw; This was used in the desktop view... */
   }
 
   .htag_holder {
@@ -366,10 +367,10 @@ img {
 }
 
 /**************** At max width (1620px) ***********************/
-@media screen and (min-width: 1400px){
-  h1, .header_game_time .htag_holder h1 {
+@media screen and (min-width: 1620px){
+  /*h1, .header_game_time .htag_holder h1 {
     font-size: 11vh;
-  }
+  }*/
   .page_wrapper{
     max-width: 1320px;
     width: 100%
@@ -378,6 +379,5 @@ img {
   .singleCard {
     padding: 14px 81px;
     margin: 15.828px;
-    /*flex: 2 0 10%;*/
   }
 }
