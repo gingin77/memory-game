@@ -190,6 +190,14 @@ function handleMatchedCards (pairArray) {
   matchedElements[0].classList.remove('not_yet_compared')
 
   pairArray.length = 0
+  gameWon (matchedCards)
+}
+
+function gameWon (matchedCards) {
+  if (matchedCards.length === 24) {
+    changingText.remove(changingText)
+    gameOverDisplay()
+  }
 }
 
 function displayTime () {
@@ -230,7 +238,11 @@ function anyMatches () {
     return "You didn't find any matches. If you want to play again, refresh the page."
   } else if (matches === 1) {
     return 'You found 1 match. If you want to play again, refresh the page.'
-  } else if (matches >= 2) {
+  } else if (matches >= 2 && matches < 12) {
     return 'You found ' + matches + ' matches!\n\nIf you want to play again, refresh the page.'
+  } else if (matches === 12) {
+    return 'Congratulations, you found all of the matches!!!!\n\nIf you want to play again, refresh the page.'
+    // symbols.add(symbols)
+    // rotateSymbols()
   }
 }
