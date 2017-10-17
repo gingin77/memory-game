@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 2000
+let gameTime = 200000
 let symbolsInterval
 let gameInterval
 
@@ -206,13 +206,11 @@ function gameWon (matchedCards) {
 }
 
 function displayTime () {
-  secondsLeft = gameTime / 1000
-
+  let secondsLeft = gameTime / 1000
   gameInterval = setInterval(function () {
     changingText.innerHTML = --secondsLeft
 
-    if (secondsLeft <= 0)
-    {
+    if (secondsLeft <= 0) {
       changingText.innerHTML = 'out of time'
       clearInterval(gameInterval)
       gameOverDisplay()
@@ -235,7 +233,6 @@ function gameOverDisplay () {
   let matchScore = document.createElement('h3')
   matchScore.innerText = anyMatches()
   textframe.appendChild(matchScore)
-  coolWinnersDisplay()
 }
 
 function anyMatches () {
@@ -278,9 +275,8 @@ function coolWinnersDisplay () {
     winnersContainer.appendChild(array5[i])
   }
   textframe.appendChild(winnersContainer)
-  startWinnersRotation ()
+  startWinnersRotation()
 }
-// [phone, yinyang, wave, timer, bomb, peaceFingers]
 
 function startWinnersRotation () {
   winnersInterval = setInterval(function () {
@@ -291,7 +287,6 @@ function startWinnersRotation () {
     let timer = document.getElementById(array4[3])
     let bomb = document.getElementById(array4[4])
     let peaceFingers = document.getElementById(array4[5])
-    // let array5 = [phone, yinyang, wave, timer, bomb, peaceFingers]
 
     phone.setAttribute('id', array4[1])
     yinyang.setAttribute('id', array4[2])
@@ -299,13 +294,6 @@ function startWinnersRotation () {
     timer.setAttribute('id', array4[4])
     bomb.setAttribute('id', array4[5])
     peaceFingers.setAttribute('id', array4[0])
-
-    // array5[0].setAttribute('id', array4[1])
-    // array5[1].setAttribute('id', array4[2])
-    // array5[2].setAttribute('id', array4[3])
-    // array5[3].setAttribute('id', array4[4])
-    // array5[4].setAttribute('id', array4[5])
-    // array5[5].setAttribute('id', array4[0])
   }, 1000)
 }
 
