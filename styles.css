@@ -193,6 +193,17 @@ header {
   margin-top: 30px;
 }
 
+#winnersContainer{
+  display: inline;
+  width: 90%;
+  margin-top: 2.5%;
+}
+
+#winnersContainer img {
+  width: 15%;
+  height: auto;
+}
+
 img {
     width: 80%;
     height: auto;

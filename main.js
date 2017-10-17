@@ -29,8 +29,9 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 120000
-let interval
+let gameTime = 2000
+let symbolsInterval
+let gameInterval
 
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
@@ -52,7 +53,7 @@ let gameDirections = document.createElement('h3')
   textframe.appendChild(gameDirections)
 
 function rotateSymbols () {
-  interval = setInterval(function () {
+  symbolsInterval = setInterval(function () {
   let twelve_oclock = document.getElementById('one')
   let ten_oclock = document.getElementById('two')
   let eight_oclock = document.getElementById('seven')
@@ -70,7 +71,7 @@ function rotateSymbols () {
 }
 
 function stopRotation() {
-  clearInterval(interval)
+  clearInterval(symbolsInterval)
 }
 
 function gameStart (event) {
@@ -195,6 +196,7 @@ function handleMatchedCards (pairArray) {
 
 function gameWon (matchedCards) {
   if (matchedCards.length === 24) {
+    clearInterval(gameInterval)
     changingText.remove(changingText)
     gameOverDisplay()
   }
@@ -203,13 +205,13 @@ function gameWon (matchedCards) {
 function displayTime () {
   secondsLeft = gameTime / 1000
 
-  let interval = setInterval(function () {
+  gameInterval = setInterval(function () {
     changingText.innerHTML = --secondsLeft
 
     if (secondsLeft <= 0)
     {
       changingText.innerHTML = 'out of time'
-      clearInterval(interval)
+      clearInterval(gameInterval)
       gameOverDisplay()
     }
   }, 1000)
@@ -230,6 +232,7 @@ function gameOverDisplay () {
   let matchScore = document.createElement('h3')
   matchScore.innerText = anyMatches()
   textframe.appendChild(matchScore)
+  coolWinnersDisplay()
 }
 
 function anyMatches () {
@@ -240,9 +243,42 @@ function anyMatches () {
     return 'You found 1 match. If you want to play again, refresh the page.'
   } else if (matches >= 2 && matches < 12) {
     return 'You found ' + matches + ' matches!\n\nIf you want to play again, refresh the page.'
-  } else if (matches === 12) {
+  } else {
     return 'Congratulations, you found all of the matches!!!!\n\nIf you want to play again, refresh the page.'
-    // symbols.add(symbols)
-    // rotateSymbols()
+    coolWinnersDisplay()
   }
+}
+
+function coolWinnersDisplay() {
+  let winnersContainer = document.createElement('div')
+  winnersContainer.setAttribute('id', 'winnersContainer')
+
+  let phone = document.createElement('img')
+  let yinyang = document.createElement('img')
+  let wave = document.createElement('img')
+  let timer = document.createElement('img')
+  let bomb = document.createElement('img')
+  let peaceFingers = document.createElement('img')
+
+  phone.setAttribute('id', 'phone')
+  phone.setAttribute('src', 'images/paran_phone.png')
+  yinyang.setAttribute('id', 'yinyang')
+  yinyang.setAttribute('src', 'images/bracket_yinyang.png')
+  wave.setAttribute('id', 'wave')
+  wave.setAttribute('src', 'images/I_hand.png')
+  timer.setAttribute('id', 'timer')
+  timer.setAttribute('src', 'images/6_timer.png')
+  bomb.setAttribute('id', 'bomb')
+  bomb.setAttribute('src', 'images/M_bomb.png')
+  peaceFingers.setAttribute('id', 'peaceFingers')
+  peaceFingers.setAttribute('src', 'images/A_peace_hand.png')
+
+  winnersContainer.appendChild(phone)
+  winnersContainer.appendChild(yinyang)
+  winnersContainer.appendChild(wave)
+  winnersContainer.appendChild(timer)
+  winnersContainer.appendChild(bomb)
+  winnersContainer.appendChild(peaceFingers)
+
+  textframe.appendChild(winnersContainer)
 }
