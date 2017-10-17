@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 2000000
+let gameTime = 120000
 let interval
 
 let gameboard = document.getElementById('gameboard_wrapper')
