@@ -30,6 +30,7 @@ let cardImage = ''
 let pairArray = []
 let matchedCards = []
 let gameTime = 2000000
+let interval
 
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
@@ -68,6 +69,10 @@ function rotateSymbols () {
   }, 1200)
 }
 
+function stopRotation() {
+  clearInterval(interval)
+}
+
 function gameStart (event) {
   removeStartFeatures()
   shuffle(deckOfMemoryCards)
@@ -84,6 +89,7 @@ function headerGameDisplay () {
 }
 
 function removeStartFeatures () {
+  stopRotation()
   startButton.remove(startButton)
   gameDirections.remove(gameDirections)
   gameboard.classList.remove('gameboard_wrapper_at_start')
