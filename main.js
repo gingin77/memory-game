@@ -253,11 +253,11 @@ function anyMatches () {
 }
 
 function coolWinnersDisplay () {
+  console.log('coolWinnersDisplay')
   winnersContainer = document.createElement('div')
   winnersContainer.setAttribute('id', 'winnersContainer')
 
   let array = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
-  // [phone, yinyang, wave, timer, bomb, peaceFingers]
   let array2 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
   let array3 = ['images/paran_phone.png', 'images/bracket_yinyang.png', 'images/I_hand.png', 'images/6_timer.png', 'images/M_bomb.png', 'images/A_peace_hand.png']
 
@@ -271,64 +271,43 @@ function coolWinnersDisplay () {
 
     let array5 = [phone, yinyang, wave, timer, bomb, peaceFingers]
 
-
-
     array5[i].setAttribute('id', array2[i])
     array2[i] = document.createElement('img')
     array2[i].setAttribute('src', array3[i])
     array5[i].appendChild(array2[i])
     winnersContainer.appendChild(array5[i])
-
-    let array4 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
-
-    winnersInterval = setInterval(function () {
-      array5[0] = document.getElementById(array4[0])
-      array5[1] = document.getElementById(array4[1])
-      array5[2] = document.getElementById(array4[2])
-      array5[3] = document.getElementById(array4[2])
-      array5[4] = document.getElementById(array4[3])
-      array5[5] = document.getElementById(array4[5])
-
-      array5[0].setAttribute('id', array4[1])
-      array5[1].setAttribute('id', array4[2])
-      array5[2].setAttribute('id', array4[3])
-      array5[3].setAttribute('id', array4[4])
-      array5[4].setAttribute('id', array4[5])
-      array5[5].setAttribute('id', array4[0])
-
-      // phone.setAttribute('id', array4[1])
-      // yinyang.setAttribute('id', array4[2])
-      // wave.setAttribute('id', array4[3])
-      // timer.setAttribute('id', array4[4])
-      // bomb.setAttribute('id', array4[5])
-      // peaceFingers.setAttribute('id', array4[0])
-      //
-      // array5[0].setAttribute('id', array4[1])
-      // array5[1].setAttribute('id', array4[2])
-      // array5[2].setAttribute('id', array4[3])
-      // array5[3].setAttribute('id', array4[4])
-      // array5[4].setAttribute('id', array4[5])
-      // array5[5].setAttribute('id', array4[0])
-
-        // document.getElementById(array5[0]).setAttribute('id', array4[1])
-        // console.log(array5[0]);
-        // document.getElementById(array5[1]).setAttribute('id', array4[2])
-        // document.getElementById(array5[2]).setAttribute('id', array4[3])
-        // document.getElementById(array5[3]).setAttribute('id', array4[4])
-        // document.getElementById(array5[4]).setAttribute('id', array4[5])
-        // document.getElementById(array5[5]).setAttribute('id', array4[0])
-
-      // phone.setAttribute('id', 'yinyang')
-      // peaceFingers.setAttribute('id', 'phone')
-      // bomb.setAttribute('id', 'peaceFingers')
-      // timer.setAttribute('id', 'bomb')
-      // wave.setAttribute('id', 'timer')
-      // yinyang.setAttribute('id', 'wave')
-    }, 5000)
-
-    }
-    textframe.appendChild(winnersContainer)
   }
+  textframe.appendChild(winnersContainer)
+  startWinnersRotation ()
+}
+// [phone, yinyang, wave, timer, bomb, peaceFingers]
+
+function startWinnersRotation () {
+  winnersInterval = setInterval(function () {
+    let array4 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+    let phone = document.getElementById(array4[0])
+    let yinyang = document.getElementById(array4[1])
+    let wave = document.getElementById(array4[2])
+    let timer = document.getElementById(array4[3])
+    let bomb = document.getElementById(array4[4])
+    let peaceFingers = document.getElementById(array4[5])
+    // let array5 = [phone, yinyang, wave, timer, bomb, peaceFingers]
+
+    phone.setAttribute('id', array4[1])
+    yinyang.setAttribute('id', array4[2])
+    wave.setAttribute('id', array4[3])
+    timer.setAttribute('id', array4[4])
+    bomb.setAttribute('id', array4[5])
+    peaceFingers.setAttribute('id', array4[0])
+
+    // array5[0].setAttribute('id', array4[1])
+    // array5[1].setAttribute('id', array4[2])
+    // array5[2].setAttribute('id', array4[3])
+    // array5[3].setAttribute('id', array4[4])
+    // array5[4].setAttribute('id', array4[5])
+    // array5[5].setAttribute('id', array4[0])
+  }, 1000)
+}
 
 function stopWinnersRotation () {
   clearInterval(winnersInterval)
