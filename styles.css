@@ -104,39 +104,39 @@ header {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
-.one {
+#one {
   grid-column: 2/ span 2;
   grid-row: 1 /span 3;
 }
 
-.two {
+#two {
   grid-column: 1 /span 2;
   grid-row: 3;
 }
-.three {
+#three {
   grid-column: 2 /span 2;
   grid-row: 5;
 }
-.four {
+#four {
     grid-column: 3 /span 2;
     grid-row: 3;
 }
-.five {
+#five {
   grid-column: 3 /span 2;
   grid-row: 8 /span 2;
 }
-.six {
+#six {
   visibility:hidden;
   grid-column: 3 /span 2;
   grid-row: 10 ;
 }
 
-.seven {
+#seven {
   grid-column: 1 /span 2;
   grid-row: 8;
 }
 
-.eight {
+#eight {
   /*visibility:hidden;*/
   grid-column: 2 /span 2;
   grid-row: 10 ;

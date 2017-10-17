@@ -50,6 +50,24 @@ let gameDirections = document.createElement('h3')
   gameDirections.innerText = 'Hit play to start the game timer!'
   textframe.appendChild(gameDirections)
 
+function rotateSymbols () {
+  interval = setInterval(function () {
+  let twelve_oclock = document.getElementById('one')
+  let ten_oclock = document.getElementById('two')
+  let eight_oclock = document.getElementById('seven')
+  let six_oclock = document.getElementById('eight')
+  let four_oclock = document.getElementById('five')
+  let two_oclock = document.getElementById('four')
+
+  twelve_oclock.setAttribute('id', 'four')
+  ten_oclock.setAttribute('id', 'one')
+  eight_oclock.setAttribute('id', 'two')
+  six_oclock.setAttribute('id', 'seven')
+  four_oclock.setAttribute('id', 'eight')
+  two_oclock.setAttribute('id', 'five')
+  }, 1200)
+}
+
 function gameStart (event) {
   removeStartFeatures()
   shuffle(deckOfMemoryCards)
