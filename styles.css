@@ -193,17 +193,6 @@ header {
   margin-top: 30px;
 }
 
-#winnersContainer{
-  display: inline;
-  width: 90%;
-  margin-top: 2.5%;
-}
-
-#winnersContainer img {
-  width: 15%;
-  height: auto;
-}
-
 img {
     width: 80%;
     height: auto;
@@ -240,6 +229,48 @@ img {
   color: #7C8DD5;
 }
 
+#winnersContainer{
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(6, 15vw);
+  grid-template-rows: repeat(1, auto);
+  grid-column-gap: 0px;
+}
+
+#winnersContainer img {
+  width: 90%;
+  height: auto;
+}
+
+#phone {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#yinyang {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#wave {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#timer {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+#bomb {
+  grid-column: 5;
+  grid-row: 1;
+}
+
+#peaceFingers {
+  grid-column: 6;
+  grid-row: 1;
+}
 
 
 /**************** Larger phone ***********************/

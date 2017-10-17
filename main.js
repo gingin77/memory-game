@@ -33,6 +33,15 @@ let gameTime = 2000
 let symbolsInterval
 let gameInterval
 
+let winnersContainer
+let phone
+let yinyang
+let wave
+let timer
+let bomb
+let peaceFingers
+let winnersInterval
+
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
 let changingText = document.getElementById('timer_display')
@@ -249,16 +258,16 @@ function anyMatches () {
   }
 }
 
-function coolWinnersDisplay() {
-  let winnersContainer = document.createElement('div')
+function coolWinnersDisplay () {
+  winnersContainer = document.createElement('div')
   winnersContainer.setAttribute('id', 'winnersContainer')
 
-  let phone = document.createElement('img')
-  let yinyang = document.createElement('img')
-  let wave = document.createElement('img')
-  let timer = document.createElement('img')
-  let bomb = document.createElement('img')
-  let peaceFingers = document.createElement('img')
+  phone = document.createElement('img')
+  yinyang = document.createElement('img')
+  wave = document.createElement('img')
+  timer = document.createElement('img')
+  bomb = document.createElement('img')
+  peaceFingers = document.createElement('img')
 
   phone.setAttribute('id', 'phone')
   phone.setAttribute('src', 'images/paran_phone.png')
@@ -281,4 +290,17 @@ function coolWinnersDisplay() {
   winnersContainer.appendChild(peaceFingers)
 
   textframe.appendChild(winnersContainer)
+
+  winnersInterval = setInterval(function () {
+    phone.setAttribute('id', 'yinyang')
+    yinyang.setAttribute('id', 'wave')
+    wave.setAttribute('id', 'timer')
+    timer.setAttribute('id', 'bomb')
+    bomb.setAttribute('id', 'peaceFingers')
+    peaceFingers.setAttribute('id', 'phone')
+  }, 1200)
 }
+
+// function stopWinnersRotation () {
+//   clearInterval(winnersInterval)
+// }
