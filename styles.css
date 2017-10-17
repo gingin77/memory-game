@@ -92,7 +92,7 @@ header {
 
 
 #symbols img{
-  width: 30%;
+  width: 35%;
   /*margin-bottom: -20px;*/
 }
 
@@ -102,7 +102,7 @@ header {
   grid-template-columns: repeat(4, 70px);
   grid-template-rows: repeat(9, 10px);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 3px;
 }
 #one {
   grid-column: 2/ span 2;
