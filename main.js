@@ -1,28 +1,28 @@
 let deckOfMemoryCards = [
-  ['Q', 'images/Q_plane.png'],
-  ['D', 'images/period_mailbox.png'],
   ['P', 'images/paran_phone.png'],
-  ['N', 'images/N_skull.png'],
-  ['6', 'images/6_timer.png'],
-  ['A', 'images/A_peace_hand.png'],
-  ['I', 'images/I_hand.png'],
-  ['J', 'images/J_smile.png'],
-  ['L', 'images/L_frown.png'],
-  ['T', 'images/T_snowflake.png'],
   ['B', 'images/bracket_yinyang.png'],
+  ['I', 'images/I_hand.png'],
+  ['6', 'images/6_timer.png'],
   ['M', 'images/M_bomb.png'],
+  ['A', 'images/A_peace_hand.png'],
+  ['N', 'images/N_skull.png'],
   ['Q', 'images/Q_plane.png'],
   ['D', 'images/period_mailbox.png'],
-  ['P', 'images/paran_phone.png'],
-  ['N', 'images/N_skull.png'],
-  ['6', 'images/6_timer.png'],
-  ['A', 'images/A_peace_hand.png'],
-  ['I', 'images/I_hand.png'],
   ['J', 'images/J_smile.png'],
   ['L', 'images/L_frown.png'],
   ['T', 'images/T_snowflake.png'],
+  ['P', 'images/paran_phone.png'],
   ['B', 'images/bracket_yinyang.png'],
-  ['M', 'images/M_bomb.png']
+  ['I', 'images/I_hand.png'],
+  ['6', 'images/6_timer.png'],
+  ['M', 'images/M_bomb.png'],
+  ['A', 'images/A_peace_hand.png'],
+  ['N', 'images/N_skull.png'],
+  ['Q', 'images/Q_plane.png'],
+  ['D', 'images/period_mailbox.png'],
+  ['J', 'images/J_smile.png'],
+  ['L', 'images/L_frown.png'],
+  ['T', 'images/T_snowflake.png']
 ]
 
 let singleCard = ''
@@ -34,12 +34,6 @@ let symbolsInterval
 let gameInterval
 
 let winnersContainer
-let phone
-let yinyang
-let wave
-let timer
-let bomb
-let peaceFingers
 let winnersInterval
 
 let gameboard = document.getElementById('gameboard_wrapper')
@@ -262,45 +256,80 @@ function coolWinnersDisplay () {
   winnersContainer = document.createElement('div')
   winnersContainer.setAttribute('id', 'winnersContainer')
 
-  phone = document.createElement('img')
-  yinyang = document.createElement('img')
-  wave = document.createElement('img')
-  timer = document.createElement('img')
-  bomb = document.createElement('img')
-  peaceFingers = document.createElement('img')
+  let array = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+  // [phone, yinyang, wave, timer, bomb, peaceFingers]
+  let array2 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+  let array3 = ['images/paran_phone.png', 'images/bracket_yinyang.png', 'images/I_hand.png', 'images/6_timer.png', 'images/M_bomb.png', 'images/A_peace_hand.png']
 
-  phone.setAttribute('id', 'phone')
-  phone.setAttribute('src', 'images/paran_phone.png')
-  yinyang.setAttribute('id', 'yinyang')
-  yinyang.setAttribute('src', 'images/bracket_yinyang.png')
-  wave.setAttribute('id', 'wave')
-  wave.setAttribute('src', 'images/I_hand.png')
-  timer.setAttribute('id', 'timer')
-  timer.setAttribute('src', 'images/6_timer.png')
-  bomb.setAttribute('id', 'bomb')
-  bomb.setAttribute('src', 'images/M_bomb.png')
-  peaceFingers.setAttribute('id', 'peaceFingers')
-  peaceFingers.setAttribute('src', 'images/A_peace_hand.png')
+  for (let i = 0; i < array.length; i++) {
+    let phone = document.createElement('div')
+    let yinyang = document.createElement('div')
+    let wave = document.createElement('div')
+    let timer = document.createElement('div')
+    let bomb = document.createElement('div')
+    let peaceFingers = document.createElement('div')
 
-  winnersContainer.appendChild(phone)
-  winnersContainer.appendChild(yinyang)
-  winnersContainer.appendChild(wave)
-  winnersContainer.appendChild(timer)
-  winnersContainer.appendChild(bomb)
-  winnersContainer.appendChild(peaceFingers)
+    let array5 = [phone, yinyang, wave, timer, bomb, peaceFingers]
 
-  textframe.appendChild(winnersContainer)
 
-  winnersInterval = setInterval(function () {
-    phone.setAttribute('id', 'yinyang')
-    yinyang.setAttribute('id', 'wave')
-    wave.setAttribute('id', 'timer')
-    timer.setAttribute('id', 'bomb')
-    bomb.setAttribute('id', 'peaceFingers')
-    peaceFingers.setAttribute('id', 'phone')
-  }, 1200)
+
+    array5[i].setAttribute('id', array2[i])
+    array2[i] = document.createElement('img')
+    array2[i].setAttribute('src', array3[i])
+    array5[i].appendChild(array2[i])
+    winnersContainer.appendChild(array5[i])
+
+    let array4 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+
+    winnersInterval = setInterval(function () {
+      array5[0] = document.getElementById(array4[0])
+      array5[1] = document.getElementById(array4[1])
+      array5[2] = document.getElementById(array4[2])
+      array5[3] = document.getElementById(array4[2])
+      array5[4] = document.getElementById(array4[3])
+      array5[5] = document.getElementById(array4[5])
+
+      array5[0].setAttribute('id', array4[1])
+      array5[1].setAttribute('id', array4[2])
+      array5[2].setAttribute('id', array4[3])
+      array5[3].setAttribute('id', array4[4])
+      array5[4].setAttribute('id', array4[5])
+      array5[5].setAttribute('id', array4[0])
+
+      // phone.setAttribute('id', array4[1])
+      // yinyang.setAttribute('id', array4[2])
+      // wave.setAttribute('id', array4[3])
+      // timer.setAttribute('id', array4[4])
+      // bomb.setAttribute('id', array4[5])
+      // peaceFingers.setAttribute('id', array4[0])
+      //
+      // array5[0].setAttribute('id', array4[1])
+      // array5[1].setAttribute('id', array4[2])
+      // array5[2].setAttribute('id', array4[3])
+      // array5[3].setAttribute('id', array4[4])
+      // array5[4].setAttribute('id', array4[5])
+      // array5[5].setAttribute('id', array4[0])
+
+        // document.getElementById(array5[0]).setAttribute('id', array4[1])
+        // console.log(array5[0]);
+        // document.getElementById(array5[1]).setAttribute('id', array4[2])
+        // document.getElementById(array5[2]).setAttribute('id', array4[3])
+        // document.getElementById(array5[3]).setAttribute('id', array4[4])
+        // document.getElementById(array5[4]).setAttribute('id', array4[5])
+        // document.getElementById(array5[5]).setAttribute('id', array4[0])
+
+      // phone.setAttribute('id', 'yinyang')
+      // peaceFingers.setAttribute('id', 'phone')
+      // bomb.setAttribute('id', 'peaceFingers')
+      // timer.setAttribute('id', 'bomb')
+      // wave.setAttribute('id', 'timer')
+      // yinyang.setAttribute('id', 'wave')
+    }, 5000)
+
+    }
+    textframe.appendChild(winnersContainer)
+  }
+
+function stopWinnersRotation () {
+  clearInterval(winnersInterval)
 }
-
-// function stopWinnersRotation () {
-//   clearInterval(winnersInterval)
-// }
