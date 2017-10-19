@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 200000
+let gameTime = 2000
 let symbolsInterval
 let gameInterval
 
@@ -233,6 +233,7 @@ function gameOverDisplay () {
   let matchScore = document.createElement('h3')
   matchScore.innerText = anyMatches()
   textframe.appendChild(matchScore)
+  coolWinnersDisplay()
 }
 
 function anyMatches () {
@@ -243,7 +244,7 @@ function anyMatches () {
     return 'You found 1 match. If you want to play again, refresh the page.'
   } else if (matches >= 2 && matches < 12) {
     return 'You found ' + matches + ' matches!\n\nIf you want to play again, refresh the page.'
-  } else {
+  } else if (matches === 12) {
     return 'Congratulations, you found all of the matches!!!!\n\nIf you want to play again, refresh the page.'
     coolWinnersDisplay()
   }

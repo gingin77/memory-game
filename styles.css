@@ -406,7 +406,6 @@ img {
     font-size: 11vh;
   }
   .page_wrapper{
-    /*max-width: 1320px;*/
     width: 100%
   }
 
@@ -419,9 +418,6 @@ img {
 
 /**************** At max width (1620px) ***********************/
 @media screen and (min-width: 1620px){
-  /*h1, .header_game_time .htag_holder h1 {
-    font-size: 11vh;
-  }*/
   .page_wrapper{
     max-width: 1320px;
     width: 100%
