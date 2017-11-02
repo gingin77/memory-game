@@ -29,8 +29,8 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-// let gameTime = 150000
-let gameTime = 3000
+let gameTime = 150000
+// let gameTime = 3000
 let symbolsInterval
 let gameInterval
 let winnersContainer
@@ -205,7 +205,7 @@ function gameWon (matchedCards) {
     gameboard.appendChild(textframe)
     createScoreElement()
     coolWinnersDisplay()
-    playAgainMessage()
+    playAgainButton()
   }
 }
 
@@ -222,7 +222,7 @@ function displayTime () {
       gameboard.appendChild(textframe)
       spellGameOver()
       createScoreElement()
-      playAgainMessage()
+      playAgainButton()
     }
   }, 1000)
 }
@@ -270,10 +270,28 @@ function anyMatches () {
   }
 }
 
-function playAgainMessage () {
-  let playAgainMessage = document.createElement('h3')
-  playAgainMessage.innerText = '\n\nIf you want to play again, refresh the page.'
-  textframe.appendChild(playAgainMessage)
+// function playAgainMessage () {
+//   let playAgainMessage = document.createElement('h3')
+//   playAgainMessage.innerText = '\n\nIf you want to play again, refresh the page.'
+//   textframe.appendChild(playAgainMessage)
+// }
+
+// let startButton = document.createElement('div')
+//   textframe.appendChild(startButton)
+//   startButton.classList.add('start_button')
+//   startButton.addEventListener('click', gameStart)
+//   startButton.innerText = 'Play'
+
+function playAgainButton () {
+  let playAgainButton = document.createElement('div')
+  textframe.appendChild(playAgainButton)
+  playAgainButton.classList.add('start_button')
+  playAgainButton.innerText = 'Play Again'
+  playAgainButton.addEventListener('click', newGame)
+}
+
+function newGame () {
+  location.reload()
 }
 
 function coolWinnersDisplay () {

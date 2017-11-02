@@ -1,23 +1,17 @@
 /*Fonts
 font-family: 'Quicksand', sans-serif;
 font-family: 'Righteous', cursive;
-font-family: 'Crushed', cursive;
-font-family:
 
 Pattern taken from - http://www.heropatterns.com/
 */
 
-/* Current attributes are for dimension 1080 x 714. A stretch limit is needed to keep all cards above the lower vertical cutoff */
-
 .page_wrapper{
-  /*border: solid;*/
   max-width: 1034px;
-  /*margin-top: 1%;*/
   margin-top: 0.2%;
-  font-size: 8.832vw; /* was 8.8vw */
+  font-size: 8.832vw;
   font-size: 5.8vw;
   background-color: #F9F2E4;
-  width: 95%; /*  70% may be better for wider views: */;
+  width: 95%;
   height: 98vh;
   text-align: center;
   margin: 0 auto;
@@ -34,19 +28,14 @@ h1 {
   text-align: start;
 }
 
-h5{
-  display: inline;
-  font-size: 0.5em;
-  color: #7C8DD5;
-  margin: 0;
-}
-
 h3{
   font-family: 'Quicksand', sans-serif;
   color: #7C8DD5;
   display: inline;
   margin: 0;
 }
+
+/******Cluster Header Styling boxes here ************/
 
 #header_container h3 {
   text-align: end;
@@ -58,14 +47,8 @@ h3{
   font-size: 0.5em;
 }
 
-#display_column_align h3{
-  font-size: 0.5em;
-  width: 60%;
-}
-
-/******Cluster Header Styling boxes here ************/
-
 header {
+  margin: 5% 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +76,6 @@ header {
 
 #symbols img{
   width: 35%;
-  /*margin-bottom: -20px;*/
 }
 
 
@@ -125,11 +107,6 @@ header {
   grid-column: 3 /span 2;
   grid-row: 8 /span 2;
 }
-#six {
-  visibility:hidden;
-  grid-column: 3 /span 2;
-  grid-row: 10 ;
-}
 
 #seven {
   grid-column: 1 /span 2;
@@ -137,7 +114,6 @@ header {
 }
 
 #eight {
-  /*visibility:hidden;*/
   grid-column: 2 /span 2;
   grid-row: 10 ;
 }
@@ -149,9 +125,26 @@ header {
   font-size: 12vw;
 }
 
+.mem_end_game {
+  text-align: center;
+  padding-left: 0;
+  font-size: 2em;
+}
+
+.htag_holder_end_game{
+  width: 100%;
+  margin-top: 2%;
+}
+
+
 
 
 /******Cluster Game Board Grad Styling boxes here ************/
+
+#display_column_align h3{
+  font-size: 0.5em;
+  width: 60%;
+}
 
 #display_column_align{
   margin-top: 10%;
@@ -232,7 +225,7 @@ img {
 #winnersContainer{
   margin-top: 5%;
   display: grid;
-  grid-template-columns: repeat(6, 15vw);
+  grid-template-columns: repeat(6, 12vw);
   grid-template-rows: repeat(1, auto);
   grid-column-gap: 0px;
 }
@@ -272,17 +265,6 @@ img {
   grid-row: 1;
 }
 
-.mem_end_game {
-  text-align: center;
-  padding-left: 0;
-  font-size: 2em;
-}
-
-.htag_holder_end_game{
-  width: 100%;
-  margin-top: 2%;
-}
-
 
 /**************** Larger phone ***********************/
 @media screen and (min-width: 320px){
@@ -307,8 +289,6 @@ img {
     padding: 0.1vh 4.2vw;
     margin: 1%;
     flex: 1 0 10%;
-    /*padding: 3.5vh 4.2vw;
-    margin: 1.3%;*/
   }
 
   #gameboard_wrapper{
@@ -323,8 +303,6 @@ img {
   header {
     flex-direction: row;
     height: 30vh;
-    /*height: 20vh;
-+   margin-top: 5%;*/
   }
 
   #display_column_align{
@@ -367,10 +345,6 @@ img {
     width: 234px;
     height: 80px;
     margin: 8.031px;
-    /*flex: 0 0 9%;*/
-    /*padding: 2.1vh;
-    margin: 1.1%;
-    flex: 0 0 14%;*/
   }
 
   img {
@@ -389,16 +363,11 @@ img {
 
   h1 {
     font-size: 1em;
-    /*font-size: 16vh;*/
   }
 
   .header_game_time .htag_holder h1 {
     font-size: 10vh;
     /*font-size: 11vw; This was used in the desktop view... */
-  }
-
-  #display_column_align{
-    margin-top: 10%;
   }
 
   .mem_end_game {
@@ -412,12 +381,6 @@ img {
     max-width: 1000px;
     width: 100%
   }
-
-  /*.singleCard {
-    padding: 1.2vh 3vw;
-    margin: 0.6% 1.2%;
-    flex: 0.6 0 11%;
-  }*/
 
 /**************** Desktop Styles ***********************/
 @media screen and (min-width: 1450px){
