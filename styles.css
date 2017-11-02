@@ -272,6 +272,17 @@ img {
   grid-row: 1;
 }
 
+.mem_end_game {
+  text-align: center;
+  padding-left: 0;
+  font-size: 2em;
+}
+
+.htag_holder_end_game{
+  width: 100%;
+  margin-top: 2%;
+}
+
 
 /**************** Larger phone ***********************/
 @media screen and (min-width: 320px){
@@ -339,6 +350,10 @@ img {
   .header_game_time .htag_holder h1 {
     font-size: 10vw;
   }
+
+  .mem_end_game {
+    font-size: 2em;
+  }
 }
 
 /**************** Laptop Styles Narrow *********************/
@@ -384,6 +399,10 @@ img {
 
   #display_column_align{
     margin-top: 10%;
+  }
+
+  .mem_end_game {
+    font-size: 1.5em;
   }
 }
 

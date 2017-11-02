@@ -29,12 +29,11 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 150000
+// let gameTime = 150000
+let gameTime = 3000
 let symbolsInterval
 let gameInterval
-
 let winnersContainer
-let winnersInterval
 
 let gameboard = document.getElementById('gameboard_wrapper')
 let headerContainer = document.getElementById('header_container')
@@ -57,19 +56,19 @@ let gameDirections = document.createElement('h3')
 
 function rotateSymbols () {
   symbolsInterval = setInterval(function () {
-  let twelve_oclock = document.getElementById('one')
-  let ten_oclock = document.getElementById('two')
-  let eight_oclock = document.getElementById('seven')
-  let six_oclock = document.getElementById('eight')
-  let four_oclock = document.getElementById('five')
-  let two_oclock = document.getElementById('four')
+    let twelveOClock = document.getElementById('one')
+    let tenOClock = document.getElementById('two')
+    let eightOClock = document.getElementById('seven')
+    let sixOClock = document.getElementById('eight')
+    let fourOClock = document.getElementById('five')
+    let twoOClock = document.getElementById('four')
 
-  twelve_oclock.setAttribute('id', 'four')
-  ten_oclock.setAttribute('id', 'one')
-  eight_oclock.setAttribute('id', 'two')
-  six_oclock.setAttribute('id', 'seven')
-  four_oclock.setAttribute('id', 'eight')
-  two_oclock.setAttribute('id', 'five')
+    twelveOClock.setAttribute('id', 'four')
+    tenOClock.setAttribute('id', 'one')
+    eightOClock.setAttribute('id', 'two')
+    sixOClock.setAttribute('id', 'seven')
+    fourOClock.setAttribute('id', 'eight')
+    twoOClock.setAttribute('id', 'five')
   }, 1200)
 }
 
@@ -202,9 +201,11 @@ function gameWon (matchedCards) {
     clearInterval(gameInterval)
     changingText.remove(changingText)
     removeCards()
+    centerMemLogo()
     gameboard.appendChild(textframe)
     createScoreElement()
     coolWinnersDisplay()
+    playAgainMessage()
   }
 }
 
@@ -214,12 +215,14 @@ function displayTime () {
     changingText.innerHTML = --secondsLeft
 
     if (secondsLeft <= 0) {
-      changingText.innerHTML = 'out of time'
+      changingText.innerHTML = ''
       clearInterval(gameInterval)
       removeCards()
+      centerMemLogo()
       gameboard.appendChild(textframe)
       spellGameOver()
       createScoreElement()
+      playAgainMessage()
     }
   }, 1000)
 }
@@ -229,6 +232,16 @@ function removeCards () {
   for (let i = cards.length - 1; i > -1; i--) {
     cards[i].parentNode.removeChild(cards[i])
   }
+}
+
+function centerMemLogo () {
+  let logo = document.getElementById('Mem')
+  let logoHolder = document.querySelector('.htag_holder')
+  console.log(logo)
+  console.log(logoHolder)
+  logo.classList.add('mem_end_game')
+  logoHolder.classList.remove('htag_holder')
+  logoHolder.classList.add('htag_holder_end_game')
 }
 
 function spellGameOver () {
@@ -247,19 +260,23 @@ function createScoreElement () {
 function anyMatches () {
   let matches = matchedCards.length / 2
   if (matches === 0) {
-    return "You didn't find any matches. If you want to play again, refresh the page."
+    return "You didn't find any matches."
   } else if (matches === 1) {
-    return 'You found 1 match. If you want to play again, refresh the page.'
+    return 'You found 1 match.'
   } else if (matches >= 2 && matches < 12) {
-    return 'You found ' + matches + ' matches!\n\nIf you want to play again, refresh the page.'
+    return 'You found ' + matches + ' matches!'
   } else if (matches === 12) {
-    return 'Congratulations, you found all of the matches!!!!\n\nIf you want to play again, refresh the page.'
-    coolWinnersDisplay()
+    return 'Congratulations, you found all of the matches!!!!'
   }
 }
 
+function playAgainMessage () {
+  let playAgainMessage = document.createElement('h3')
+  playAgainMessage.innerText = '\n\nIf you want to play again, refresh the page.'
+  textframe.appendChild(playAgainMessage)
+}
+
 function coolWinnersDisplay () {
-  console.log('coolWinnersDisplay')
   winnersContainer = document.createElement('div')
   winnersContainer.setAttribute('id', 'winnersContainer')
 
@@ -303,8 +320,4 @@ function startWinnersRotation () {
     bomb.setAttribute('id', iconNames[5])
     peaceFingers.setAttribute('id', iconNames[0])
   }, 1000)
-}
-
-function stopWinnersRotation () {
-  clearInterval(winnersInterval)
 }
