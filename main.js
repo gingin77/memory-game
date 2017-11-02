@@ -29,7 +29,7 @@ let singleCard = ''
 let cardImage = ''
 let pairArray = []
 let matchedCards = []
-let gameTime = 2000
+let gameTime = 150000
 let symbolsInterval
 let gameInterval
 
@@ -73,7 +73,7 @@ function rotateSymbols () {
   }, 1200)
 }
 
-function stopRotation() {
+function stopRotation () {
   clearInterval(symbolsInterval)
 }
 
@@ -194,14 +194,17 @@ function handleMatchedCards (pairArray) {
   matchedElements[0].classList.remove('not_yet_compared')
 
   pairArray.length = 0
-  gameWon (matchedCards)
+  gameWon(matchedCards)
 }
 
 function gameWon (matchedCards) {
   if (matchedCards.length === 24) {
     clearInterval(gameInterval)
     changingText.remove(changingText)
-    gameOverDisplay()
+    removeCards()
+    gameboard.appendChild(textframe)
+    createScoreElement()
+    coolWinnersDisplay()
   }
 }
 
@@ -213,27 +216,32 @@ function displayTime () {
     if (secondsLeft <= 0) {
       changingText.innerHTML = 'out of time'
       clearInterval(gameInterval)
-      gameOverDisplay()
+      removeCards()
+      gameboard.appendChild(textframe)
+      spellGameOver()
+      createScoreElement()
     }
   }, 1000)
 }
 
-function gameOverDisplay () {
+function removeCards () {
   let cards = document.getElementsByClassName('singleCard')
   for (let i = cards.length - 1; i > -1; i--) {
     cards[i].parentNode.removeChild(cards[i])
   }
-  gameboard.appendChild(textframe)
+}
 
+function spellGameOver () {
   let gameOverAlert = document.createElement('div')
   gameOverAlert.classList.add('game_over')
   gameOverAlert.innerText = 'Game over'
   textframe.appendChild(gameOverAlert)
+}
 
+function createScoreElement () {
   let matchScore = document.createElement('h3')
   matchScore.innerText = anyMatches()
   textframe.appendChild(matchScore)
-  coolWinnersDisplay()
 }
 
 function anyMatches () {
@@ -255,11 +263,10 @@ function coolWinnersDisplay () {
   winnersContainer = document.createElement('div')
   winnersContainer.setAttribute('id', 'winnersContainer')
 
-  let array = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
-  let array2 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
-  let array3 = ['images/paran_phone.png', 'images/bracket_yinyang.png', 'images/I_hand.png', 'images/6_timer.png', 'images/M_bomb.png', 'images/A_peace_hand.png']
+  let iconNames = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+  let imagePaths = ['images/paran_phone.png', 'images/bracket_yinyang.png', 'images/I_hand.png', 'images/6_timer.png', 'images/M_bomb.png', 'images/A_peace_hand.png']
 
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < iconNames.length; i++) {
     let phone = document.createElement('div')
     let yinyang = document.createElement('div')
     let wave = document.createElement('div')
@@ -267,13 +274,13 @@ function coolWinnersDisplay () {
     let bomb = document.createElement('div')
     let peaceFingers = document.createElement('div')
 
-    let array5 = [phone, yinyang, wave, timer, bomb, peaceFingers]
+    let divElements = [phone, yinyang, wave, timer, bomb, peaceFingers]
 
-    array5[i].setAttribute('id', array2[i])
-    array2[i] = document.createElement('img')
-    array2[i].setAttribute('src', array3[i])
-    array5[i].appendChild(array2[i])
-    winnersContainer.appendChild(array5[i])
+    divElements[i].setAttribute('id', iconNames[i])
+    iconNames[i] = document.createElement('img')
+    iconNames[i].setAttribute('src', imagePaths[i])
+    divElements[i].appendChild(iconNames[i])
+    winnersContainer.appendChild(divElements[i])
   }
   textframe.appendChild(winnersContainer)
   startWinnersRotation()
@@ -281,20 +288,20 @@ function coolWinnersDisplay () {
 
 function startWinnersRotation () {
   winnersInterval = setInterval(function () {
-    let array4 = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
-    let phone = document.getElementById(array4[0])
-    let yinyang = document.getElementById(array4[1])
-    let wave = document.getElementById(array4[2])
-    let timer = document.getElementById(array4[3])
-    let bomb = document.getElementById(array4[4])
-    let peaceFingers = document.getElementById(array4[5])
+    let iconNames = ['phone', 'yinyang', 'wave', 'timer', 'bomb', 'peaceFingers']
+    let phone = document.getElementById(iconNames[0])
+    let yinyang = document.getElementById(iconNames[1])
+    let wave = document.getElementById(iconNames[2])
+    let timer = document.getElementById(iconNames[3])
+    let bomb = document.getElementById(iconNames[4])
+    let peaceFingers = document.getElementById(iconNames[5])
 
-    phone.setAttribute('id', array4[1])
-    yinyang.setAttribute('id', array4[2])
-    wave.setAttribute('id', array4[3])
-    timer.setAttribute('id', array4[4])
-    bomb.setAttribute('id', array4[5])
-    peaceFingers.setAttribute('id', array4[0])
+    phone.setAttribute('id', iconNames[1])
+    yinyang.setAttribute('id', iconNames[2])
+    wave.setAttribute('id', iconNames[3])
+    timer.setAttribute('id', iconNames[4])
+    bomb.setAttribute('id', iconNames[5])
+    peaceFingers.setAttribute('id', iconNames[0])
   }, 1000)
 }
 
