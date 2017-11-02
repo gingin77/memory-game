@@ -30,7 +30,6 @@ let cardImage = ''
 let pairArray = []
 let matchedCards = []
 let gameTime = 150000
-// let gameTime = 3000
 let symbolsInterval
 let gameInterval
 let winnersContainer
@@ -40,6 +39,7 @@ let headerContainer = document.getElementById('header_container')
 let changingText = document.getElementById('timer_display')
 let symbols = document.getElementById('symbols')
 
+// hardcode the next 3 elements into the HTML file...
 let textframe = document.createElement('div')
   textframe.setAttribute('id', 'display_column_align')
   gameboard.appendChild(textframe)
@@ -84,13 +84,6 @@ function gameStart (event) {
   headerGameDisplay()
 }
 
-function headerGameDisplay () {
-  changingText.innerText = ''
-  headerContainer.classList.add('header_game_time')
-  headerContainer.appendChild(changingText)
-  symbols.remove(symbols)
-}
-
 function removeStartFeatures () {
   stopRotation()
   startButton.remove(startButton)
@@ -125,6 +118,31 @@ function makeCards () {
     singleCard.appendChild(cardImage)
     gameboard.appendChild(singleCard)
   }
+}
+
+function displayTime () {
+  let secondsLeft = gameTime / 1000
+  gameInterval = setInterval(function () {
+    changingText.innerHTML = --secondsLeft
+
+    if (secondsLeft <= 0) {
+      changingText.innerHTML = ''
+      clearInterval(gameInterval)
+      removeCards()
+      centerMemLogo()
+      gameboard.appendChild(textframe)
+      spellGameOver()
+      createScoreElement()
+      playAgainButton()
+    }
+  }, 1000)
+}
+
+function headerGameDisplay () {
+  changingText.innerText = ''
+  headerContainer.classList.add('header_game_time')
+  headerContainer.appendChild(changingText)
+  symbols.remove(symbols)
 }
 
 function onClick (i) {
@@ -207,24 +225,6 @@ function gameWon (matchedCards) {
     coolWinnersDisplay()
     playAgainButton()
   }
-}
-
-function displayTime () {
-  let secondsLeft = gameTime / 1000
-  gameInterval = setInterval(function () {
-    changingText.innerHTML = --secondsLeft
-
-    if (secondsLeft <= 0) {
-      changingText.innerHTML = ''
-      clearInterval(gameInterval)
-      removeCards()
-      centerMemLogo()
-      gameboard.appendChild(textframe)
-      spellGameOver()
-      createScoreElement()
-      playAgainButton()
-    }
-  }, 1000)
 }
 
 function removeCards () {
